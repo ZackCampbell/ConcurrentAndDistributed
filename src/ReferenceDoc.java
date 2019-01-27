@@ -1,4 +1,3 @@
-package src;
 import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 import java.util.concurrent.*;
@@ -263,7 +262,7 @@ class PetersonAlgorithm implements Lock {
     boolean wantCS[] = {false, false};
     int turn = 1;
     public void requestCS(int i) {
-        int j = 1- i;
+        int j = 1 - i;
         wantCS[i] = true;
         turn = j;
         while (wantCS[j] && (turn == j));
