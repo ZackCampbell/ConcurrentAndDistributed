@@ -32,17 +32,7 @@ public class PSort extends RecursiveTask<Integer> {
         s1.join();
     }
 
-    public static int partition(int[] A, int begin, int end) {
-//        int pivot = A[end];
-//        int i = begin - 1;
-//        for (int j = begin; j < end; j++) {
-//            if (A[j] <= pivot) {
-//                swap(A, ++i, j);
-//            }
-//        }
-//        swap(A, ++i, end);
-//        return i;
-
+    private static int partition(int[] A, int begin, int end) {
         int i = begin - 1;
         int j = end + 1;
         int pivot = A[begin];
@@ -56,8 +46,6 @@ public class PSort extends RecursiveTask<Integer> {
             if (i >= j)
                 return j;
             swap(A, i, j);
-            if (A[i] == A[j] && A[i] == pivot)  // DONT THINK THIS WORKS
-                return ++j;
         }
     }
 
@@ -71,7 +59,7 @@ public class PSort extends RecursiveTask<Integer> {
         }
     }
 
-    public static void swap(int[] A, int i, int j) {
+    private static void swap(int[] A, int i, int j) {
         int temp = A[i];
         A[i] = A[j];
         A[j] = temp;

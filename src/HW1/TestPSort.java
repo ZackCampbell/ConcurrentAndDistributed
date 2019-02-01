@@ -9,6 +9,14 @@ import java.util.concurrent.ForkJoinPool;
 
 public class TestPSort {
 
+    private boolean isSorted(int[] A) {
+        for (int i = 1; i < A.length; i++) {
+            if (A[i] < A[i-1])
+                return false;
+        }
+        return true;
+    }
+
     @Test
     public void testSort5() {
         int processors = Runtime.getRuntime().availableProcessors();
@@ -55,6 +63,10 @@ public class TestPSort {
         long start = System.nanoTime();
         int result = pool.invoke(testPSort);
         System.out.println("\n Testing with array of length 100 | Time: " + (System.nanoTime() - start));
+        if (isSorted(test))
+            System.out.println("Sorted");
+        else
+            System.out.println("** Failed **");
     }
 
     @Test
@@ -70,6 +82,10 @@ public class TestPSort {
         long start = System.nanoTime();
         int result = pool.invoke(testPSort);
         System.out.println("\n Testing with array of length 10000 | Time: " + (System.nanoTime() - start));
+        if (isSorted(test))
+            System.out.println("Sorted");
+        else
+            System.out.println("** Failed **");
     }
 
     @Test
