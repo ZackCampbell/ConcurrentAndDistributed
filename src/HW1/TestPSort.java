@@ -22,23 +22,23 @@ public class TestPSort {
         for (int i = 0; i < test.length; i++)
             System.out.print(test[i] + " ");
         Assert.assertArrayEquals(expected, test);
-
+        pool.shutdown();
     }
 
     @Test
     public void testSort10() {
         int processors = Runtime.getRuntime().availableProcessors();
-        System.out.println(processors);
+        System.out.println("Number of processors: " + processors);
         ForkJoinPool pool = new ForkJoinPool(processors);
         int[] test = {2, 4, 3, 1, 5, 12, 33, 6, 0, 13};
         int[] expected = {0, 1, 2, 3, 4, 5, 6, 12, 13, 33};
         PSort testPSort = new PSort(test, 0, 10);
         long start = System.nanoTime();
         int result = pool.invoke(testPSort);
-        Assert.assertArrayEquals(expected, test);
         System.out.println("\n Testing with array of length 10 | Time: " + (System.nanoTime() - start));
         for (int i = 0; i < test.length; i++)
             System.out.print(test[i] + " ");
+        Assert.assertArrayEquals(expected, test);
         pool.shutdown();
     }
 
@@ -46,7 +46,7 @@ public class TestPSort {
     public void testSort100() {
         int processors = Runtime.getRuntime().availableProcessors();
         ForkJoinPool pool = new ForkJoinPool(processors);
-        int[] test = new int[50];
+        int[] test = new int[100];
         Random rand = new Random();
         for (int i = 0; i < test.length; i++) {
             test[i] = rand.nextInt(100 + 1);

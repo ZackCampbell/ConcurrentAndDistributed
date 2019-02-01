@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/HW1/PSort.java" line="33" />
+    <bookmark url="file://$PROJECT_DIR$/src/HW1/PSort.java" line="37" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="086dc031-0932-4f32-a620-77ba2287a5b2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/HW1/PMerge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HW1/PSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HW1/TestPSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Symbols.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConcurrentAndDistributed.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ConcurrentAndDistributed.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ReferenceDoc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReferenceDoc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW1/PSort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW1/PSort.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW1/TestPSort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW1/TestPSort.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HW1/PSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW1/PSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HW1/TestPSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW1/TestPSort.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ReferenceDoc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2141">
-              <caret line="272" column="1" lean-forward="true" selection-start-line="272" selection-start-column="1" selection-end-line="272" selection-end-column="1" />
+            <state relative-caret-position="3672">
+              <caret line="272" column="1" selection-start-line="272" selection-start-column="1" selection-end-line="272" selection-end-column="1" />
               <folding>
                 <element signature="e#2946#3567#0" />
                 <element signature="e#3099#3507#0" />
@@ -39,9 +36,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HW1/PSort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="42" column="24" lean-forward="true" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
+            <state relative-caret-position="518">
+              <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
               <folding>
+                <element signature="method#insertSort#0;class#PSort#0" />
                 <element signature="method#swap#0;class#PSort#0" />
                 <element signature="method#printArray#0;class#PSort#0" />
                 <element signature="method#compute#0;class#PSort#0" />
@@ -53,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HW1/TestPSort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+            <state relative-caret-position="748">
+              <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HW1/PMerge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+            <state relative-caret-position="357">
+              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#673#674#0" expanded="true" />
@@ -146,7 +144,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548553287431" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548805445580" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -169,20 +167,6 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.TestPSort.testSort100">
-    <configuration name="TestPSort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ConcurrentAndDistributed" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="HW1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="HW1" />
-      <option name="MAIN_CLASS_NAME" value="HW1.TestPSort" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="TestPSort.testSort0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ConcurrentAndDistributed" />
       <extension name="coverage">
@@ -231,6 +215,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestPSort.testSort10000" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ConcurrentAndDistributed" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="HW1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="HW1" />
+      <option name="MAIN_CLASS_NAME" value="HW1.TestPSort" />
+      <option name="METHOD_NAME" value="testSort10000" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestPSort.testSort5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ConcurrentAndDistributed" />
       <extension name="coverage">
@@ -250,10 +250,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TestPSort.testSort100" />
+        <item itemvalue="JUnit.TestPSort.testSort10000" />
         <item itemvalue="JUnit.TestPSort.testSort10" />
         <item itemvalue="JUnit.TestPSort.testSort5" />
         <item itemvalue="JUnit.TestPSort.testSort0" />
-        <item itemvalue="JUnit.TestPSort" />
       </list>
     </recent_temporary>
   </component>
@@ -269,50 +269,51 @@
       <updated>1548364221396</updated>
       <workItem from="1548364225459" duration="1324000" />
       <workItem from="1548536941239" duration="12196000" />
-      <workItem from="1548553302133" duration="7473000" />
+      <workItem from="1548553302133" duration="14105000" />
+      <workItem from="1548985061181" duration="598000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestPSort_testSort5 - 2019.01.27 at 12h 55m 28s.xml">
-      <configuration name="TestPSort.testSort5" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestPSort_testSort5 - 2019.01.27 at 12h 56m 10s.xml">
-      <configuration name="TestPSort.testSort5" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestPSort_testSort5 - 2019.01.27 at 12h 57m 32s.xml">
-      <configuration name="TestPSort.testSort5" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestPSort_testSort5 - 2019.01.27 at 12h 58m 09s.xml">
-      <configuration name="TestPSort.testSort5" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestPSort_testSort5 - 2019.01.27 at 12h 58m 27s.xml">
-      <configuration name="TestPSort.testSort5" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestPSort_testSort5 - 2019.01.27 at 13h 02m 18s.xml">
-      <configuration name="TestPSort.testSort5" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestPSort_testSort5 - 2019.01.27 at 13h 05m 07s.xml">
-      <configuration name="TestPSort.testSort5" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestPSort_testSort5 - 2019.01.27 at 13h 05m 51s.xml">
-      <configuration name="TestPSort.testSort5" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="TestPSort_testSort10 - 2019.01.27 at 13h 06m 01s.xml">
       <configuration name="TestPSort.testSort10" configurationId="JUnit" />
     </history-entry>
     <history-entry file="TestPSort_testSort100 - 2019.01.27 at 13h 06m 16s.xml">
       <configuration name="TestPSort.testSort100" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestPSort_testSort5 - 2019.01.28 at 09h 55m 12s.xml">
+      <configuration name="TestPSort.testSort5" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestPSort_testSort10 - 2019.01.28 at 09h 55m 17s.xml">
+      <configuration name="TestPSort.testSort10" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestPSort_testSort10 - 2019.01.28 at 09h 56m 23s.xml">
+      <configuration name="TestPSort.testSort10" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestPSort_testSort10 - 2019.01.29 at 14h 30m 17s.xml">
+      <configuration name="TestPSort.testSort10" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestPSort_testSort10 - 2019.01.29 at 14h 30m 49s.xml">
+      <configuration name="TestPSort.testSort10" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestPSort_testSort100 - 2019.01.29 at 14h 31m 03s.xml">
+      <configuration name="TestPSort.testSort100" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestPSort_testSort10000 - 2019.01.29 at 15h 03m 26s.xml">
+      <configuration name="TestPSort.testSort10000" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestPSort_testSort100 - 2019.01.29 at 15h 11m 46s.xml">
+      <configuration name="TestPSort.testSort100" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20993000" />
+    <option name="totallyTimeSpent" value="28223000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15938166" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1609808" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -321,7 +322,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30444205" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -360,10 +361,31 @@
     <entry file="file://$PROJECT_DIR$/src/Util.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ReferenceDoc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3672">
+          <caret line="272" column="1" selection-start-line="272" selection-start-column="1" selection-end-line="272" selection-end-column="1" />
+          <folding>
+            <element signature="e#2946#3567#0" />
+            <element signature="e#3099#3507#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HW1/TestPSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/HW1/PMerge.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="24" column="13" lean-forward="true" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        <state relative-caret-position="357">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#673#674#0" expanded="true" />
@@ -372,32 +394,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HW1/TestPSort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReferenceDoc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2141">
-          <caret line="272" column="1" lean-forward="true" selection-start-line="272" selection-start-column="1" selection-end-line="272" selection-end-column="1" />
-          <folding>
-            <element signature="e#2946#3567#0" />
-            <element signature="e#3099#3507#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HW1/PSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="42" column="24" lean-forward="true" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
+        <state relative-caret-position="518">
+          <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
           <folding>
+            <element signature="method#insertSort#0;class#PSort#0" />
             <element signature="method#swap#0;class#PSort#0" />
             <element signature="method#printArray#0;class#PSort#0" />
             <element signature="method#compute#0;class#PSort#0" />

@@ -20,6 +20,10 @@ public class PSort extends RecursiveTask<Integer> {
     public static void parallelSort(int[] A, int begin, int end) {
         if (begin >= end)
             return;
+        if (end - begin <= 16) {
+            insertSort(A, begin, end);
+            return;
+        }
         int pivot = partition(A, begin, end);
         PSort s1 = new PSort(A, begin, pivot);
         s1.fork();
@@ -52,8 +56,18 @@ public class PSort extends RecursiveTask<Integer> {
             if (i >= j)
                 return j;
             swap(A, i, j);
-            if (A[i] == A[j] && A[i] == pivot)
+            if (A[i] == A[j] && A[i] == pivot)  // DONT THINK THIS WORKS
                 return ++j;
+        }
+    }
+
+    private static void insertSort(int[] A, int begin, int end) {
+        for (int i = begin + 1; i <= end; i++) {
+            for (int j = i; j > begin; j--) {
+                if(A[j] < A[j-1]){
+                    swap(A, j, j-1);
+                }
+            }
         }
     }
 
