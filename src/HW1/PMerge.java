@@ -7,8 +7,20 @@ public class PMerge{
         ExecutorService executorService = Executors.newFixedThreadPool(numThreads);
         Callable t = new MergeThread(A,B,C,executorService);
         try {
-            Future<Integer> re = executorService.submit(t);
-            re.get();
+            Future<Integer> f = executorService.submit(t);
+
+            f.get();
+
+            executorService.shutdown();
+
+            int temp = 0;
+
+            for(int i = 0, j = C.length-1; i <= j; i++, j--){
+                temp = C[i];
+                C[i] = C[j];
+                C[j] = temp;
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,23 +41,31 @@ class MergeThread implements Callable<Integer> {
     ExecutorService executor;
 
     public MergeThread(int[] A, int[] B, int[] C, ExecutorService executor){
-        super();
+        //super();
         this.executor = executor;
-        this.C = C;
+
         this.A = A;
         this.B = B;
+        this.C = C;
+
+        // i start index of A, j end index of A
+        // k start index of A, l end index of B
+        // p start index of A, q end index of C
+
         this.i = 0;
-        this.j = A.length - 1;
+        this.j = A.length ;
+
         this.k = 0;
-        this.l = B.length - 1;
+        this.l = B.length ;
 
         this.p = 0;
         this.q = A.length + B.length - 1;
 
-        init(A,B,i,j,k,l);
+        init(A,B,i,j,k,l); // if size of A is bigger than B, swap A and B
     }
 
     public MergeThread(int[] A, int[] B, int[] C, int i, int j,int k, int l,int p,int q, ExecutorService executor){
+
         this.executor = executor;
 
         this.C = C;
@@ -66,7 +86,8 @@ class MergeThread implements Callable<Integer> {
 
             this.k = i;
             this.l = j;
-        }else {
+        }
+        else{
             this.A = A;
             this.B = B;
             this.i = i;
@@ -79,30 +100,25 @@ class MergeThread implements Callable<Integer> {
     @Override
     public Integer call() {
 
-        //System.out.println(i + "  " + j);
-
         if( i >= j )
             return null;
 
-        int r = (i + j)/2;
+        int r = (i+j)/2;
         int s = binarySearch(A, B, r, k, l);
         int t = p + (r - i) + (s - k);
         C[t] = A[r];
-        //System.out.println("C"+t + " == " + A[r]);
 
-        Future<Integer> future1 = executor.submit(new MergeThread(A, B, C,    i,  r, k ,s,     p, t, executor));
-        Future<Integer> future2 = executor.submit(new MergeThread(A, B, C, r+1, j,s ,l, t+1, q, executor));
+        Future<Integer> f1 = executor.submit(new MergeThread(A, B, C,    i,  r, k ,s,     p, t, executor));
+        Future<Integer> f2 = executor.submit(new MergeThread(A, B, C, r+1, j,s ,l, t+1, q, executor));
 
         try {
-            future1.get();
-            future2.get();
+            f1.get();
+            f2.get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
-        executor.shutdown();
 
         return -1;
     }
@@ -110,7 +126,7 @@ class MergeThread implements Callable<Integer> {
     public static int binarySearch(int[] A, int[] B, int r, int k, int l){
 
         int start = k;
-        int end = l;
+        int end = l-1;
 
         while(start <= end){
             int mid = (start + end)/2;
