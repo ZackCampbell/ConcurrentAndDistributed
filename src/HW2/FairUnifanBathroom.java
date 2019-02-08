@@ -1,25 +1,21 @@
 package HW2;
 
-public class FairUnifanBathroom {
+public class FairUnifanBathroom {   
+	
+  public synchronized void enterBathroomUT() {
+    // Called when a UT fan wants to enter bathroom	
+  }
+	
+	public synchronized void enterBathroomOU() {
+    // Called when a OU fan wants to enter bathroom
+	}
+	
+	public synchronized void leaveBathroomUT() {
+    // Called when a UT fan wants to leave bathroom
+	}
 
-    // Bathroom can only hold 5 fans at a time
-    // There can only be fans from the same team in the bathroom at a time
-    // A fan trying to enter the bathroom has to wait in a line (is blocked) until his turn
-
-    public void enterBathroomUT() {
-
-    }
-
-    public void enterBathroomOU() {
-
-    }
-
-    public void leaveBathroomUT() {
-
-    }
-
-    public void leaveBathroomOU() {
-
-    }
-
+	public synchronized void leaveBathroomOU() {
+    // Called when a OU fan wants to leave bathroom
+	}
 }
+
