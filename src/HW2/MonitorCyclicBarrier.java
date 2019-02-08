@@ -16,7 +16,10 @@ public class MonitorCyclicBarrier {
         // Returns: the arrival index of the current thread, where index
         // (parties - 1) indicates the first to arrive and zero indicates
         // the last to arrive.
-        return 0;
+         int index = 0;
+		
+          // you need to write this code
+	    return index;
     }
 
 }
