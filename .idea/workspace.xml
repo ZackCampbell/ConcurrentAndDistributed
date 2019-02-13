@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="086dc031-0932-4f32-a620-77ba2287a5b2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/HW2/testPriorityQueue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HW2/PriorityQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW2/PriorityQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HW2/testCyclicBarrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW2/testCyclicBarrier.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ReferenceDoc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="978">
-              <caret line="1030" column="5" lean-forward="true" selection-start-line="1030" selection-start-column="5" selection-end-line="1030" selection-end-column="5" />
+            <state relative-caret-position="14552">
+              <caret line="1030" column="5" selection-start-line="1030" selection-start-column="5" selection-end-line="1030" selection-end-column="5" />
               <folding>
                 <element signature="e#2946#3567#0" />
                 <element signature="e#3099#3507#0" />
@@ -48,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HW2/FairUnifanBathroom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="119">
+              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -57,8 +59,50 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HW2/PriorityQueue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+            <state relative-caret-position="1326">
+              <caret line="78" column="20" lean-forward="true" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#print#0;class#PriorityQueue#0" />
+                <element signature="e#4779#4780#0" expanded="true" />
+                <element signature="e#4849#4850#0" expanded="true" />
+                <element signature="e#4922#4923#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/HW2/testPriorityQueue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="49" column="18" lean-forward="true" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#623#624#0" expanded="true" />
+                <element signature="e#663#664#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/HW1/TestPSort.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/HW2/testCyclicBarrier.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -92,6 +136,8 @@
         <option value="$PROJECT_DIR$/src/HW2/FairUnifanBathroom.java" />
         <option value="$PROJECT_DIR$/src/HW2/CyclicBarrier.java" />
         <option value="$PROJECT_DIR$/src/HW2/MonitorCyclicBarrier.java" />
+        <option value="$PROJECT_DIR$/src/HW2/testCyclicBarrier.java" />
+        <option value="$PROJECT_DIR$/src/HW2/testPriorityQueue.java" />
         <option value="$PROJECT_DIR$/src/HW2/PriorityQueue.java" />
       </list>
     </option>
@@ -126,14 +172,20 @@
               <item name="DistributedSystems" type="b2602c69:ProjectViewProjectNode" />
               <item name="ConcurrentAndDistributed" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="HW1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DistributedSystems" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ConcurrentAndDistributed" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="HW2" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -143,10 +195,11 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549426888626" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550025225615" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Multicore/Multicore" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -165,7 +218,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestPSort.testSort0">
+  <component name="RunManager" selected="JUnit.testPriorityQueue.sanityTest">
     <configuration name="TestPSort.testSort0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ConcurrentAndDistributed" />
       <extension name="coverage">
@@ -177,38 +230,6 @@
       <option name="PACKAGE_NAME" value="HW1" />
       <option name="MAIN_CLASS_NAME" value="HW1.TestPSort" />
       <option name="METHOD_NAME" value="testSort0" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestPSort.testSort10" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ConcurrentAndDistributed" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="HW1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="HW1" />
-      <option name="MAIN_CLASS_NAME" value="HW1.TestPSort" />
-      <option name="METHOD_NAME" value="testSort10" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestPSort.testSort100" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ConcurrentAndDistributed" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="HW1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="HW1" />
-      <option name="MAIN_CLASS_NAME" value="HW1.TestPSort" />
-      <option name="METHOD_NAME" value="testSort100" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -246,13 +267,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="testPriorityQueue.sanityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ConcurrentAndDistributed" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="HW2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="HW2" />
+      <option name="MAIN_CLASS_NAME" value="HW2.testPriorityQueue" />
+      <option name="METHOD_NAME" value="sanityTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testPriorityQueue.testPQueueAdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ConcurrentAndDistributed" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="HW2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="HW2" />
+      <option name="MAIN_CLASS_NAME" value="HW2.testPriorityQueue" />
+      <option name="METHOD_NAME" value="testPQueueAdd" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.testPriorityQueue.sanityTest" />
+        <item itemvalue="JUnit.testPriorityQueue.testPQueueAdd" />
         <item itemvalue="JUnit.TestPSort.testSort0" />
         <item itemvalue="JUnit.TestPSort.testSort5" />
         <item itemvalue="JUnit.TestPSort.testSort10000" />
-        <item itemvalue="JUnit.TestPSort.testSort100" />
-        <item itemvalue="JUnit.TestPSort.testSort10" />
       </list>
     </recent_temporary>
   </component>
@@ -272,50 +325,51 @@
       <workItem from="1548985061181" duration="1347000" />
       <workItem from="1549250664191" duration="320000" />
       <workItem from="1549426196954" duration="1284000" />
-      <workItem from="1549828676537" duration="7617000" />
+      <workItem from="1549828676537" duration="9103000" />
+      <workItem from="1550015635816" duration="8122000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TestPSort_testSort10000 - 2019.01.31 at 20h 07m 00s.xml">
-      <configuration name="TestPSort.testSort10000" configurationId="JUnit" />
+    <history-entry file="testPriorityQueue_sanityTest - 2019.02.12 at 20h 02m 39s.xml">
+      <configuration name="testPriorityQueue.sanityTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestPSort_testSort100 - 2019.01.31 at 20h 07m 31s.xml">
-      <configuration name="TestPSort.testSort100" configurationId="JUnit" />
+    <history-entry file="testPriorityQueue_sanityTest - 2019.02.12 at 20h 02m 50s.xml">
+      <configuration name="testPriorityQueue.sanityTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestPSort_testSort100 - 2019.01.31 at 20h 07m 35s.xml">
-      <configuration name="TestPSort.testSort100" configurationId="JUnit" />
+    <history-entry file="testPriorityQueue_sanityTest - 2019.02.12 at 20h 06m 33s.xml">
+      <configuration name="testPriorityQueue.sanityTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestPSort_testSort100 - 2019.01.31 at 20h 07m 46s.xml">
-      <configuration name="TestPSort.testSort100" configurationId="JUnit" />
+    <history-entry file="testPriorityQueue_sanityTest - 2019.02.12 at 20h 11m 23s.xml">
+      <configuration name="testPriorityQueue.sanityTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestPSort_testSort100 - 2019.01.31 at 20h 07m 52s.xml">
-      <configuration name="TestPSort.testSort100" configurationId="JUnit" />
+    <history-entry file="testPriorityQueue_sanityTest - 2019.02.12 at 20h 11m 40s.xml">
+      <configuration name="testPriorityQueue.sanityTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestPSort_testSort100 - 2019.01.31 at 20h 08m 36s.xml">
-      <configuration name="TestPSort.testSort100" configurationId="JUnit" />
+    <history-entry file="testPriorityQueue_sanityTest - 2019.02.12 at 20h 12m 44s.xml">
+      <configuration name="testPriorityQueue.sanityTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestPSort_testSort100 - 2019.01.31 at 20h 08m 40s.xml">
-      <configuration name="TestPSort.testSort100" configurationId="JUnit" />
+    <history-entry file="testPriorityQueue_sanityTest - 2019.02.12 at 20h 19m 46s.xml">
+      <configuration name="testPriorityQueue.sanityTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestPSort_testSort100 - 2019.01.31 at 20h 11m 35s.xml">
-      <configuration name="TestPSort.testSort100" configurationId="JUnit" />
+    <history-entry file="testPriorityQueue_sanityTest - 2019.02.12 at 20h 30m 32s.xml">
+      <configuration name="testPriorityQueue.sanityTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestPSort_testSort10000 - 2019.01.31 at 20h 11m 45s.xml">
-      <configuration name="TestPSort.testSort10000" configurationId="JUnit" />
+    <history-entry file="testPriorityQueue_sanityTest - 2019.02.12 at 20h 32m 08s.xml">
+      <configuration name="testPriorityQueue.sanityTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TestPSort_testSort10000 - 2019.01.31 at 20h 11m 52s.xml">
-      <configuration name="TestPSort.testSort10000" configurationId="JUnit" />
+    <history-entry file="testPriorityQueue_sanityTest - 2019.02.12 at 20h 32m 22s.xml">
+      <configuration name="testPriorityQueue.sanityTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39297000" />
+    <option name="totallyTimeSpent" value="48905000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1673774" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16897655" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -324,7 +378,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30444205" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30444205" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -363,16 +417,6 @@
     <entry file="file://$PROJECT_DIR$/src/Util.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HW1/TestPSort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1411">
-          <caret line="88" column="5" selection-start-line="88" selection-start-column="5" selection-end-line="88" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HW1/PMerge.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -397,6 +441,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/HW2/testCyclicBarrier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ReferenceDoc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14552">
+          <caret line="1030" column="5" selection-start-line="1030" selection-start-column="5" selection-end-line="1030" selection-end-column="5" />
+          <folding>
+            <element signature="e#2946#3567#0" />
+            <element signature="e#3099#3507#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HW2/FairUnifanBathroom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/HW2/MonitorCyclicBarrier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -411,28 +480,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HW2/FairUnifanBathroom.java">
+    <entry file="file://$PROJECT_DIR$/src/HW1/TestPSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReferenceDoc.java">
+    <entry file="file://$PROJECT_DIR$/src/HW2/testPriorityQueue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="978">
-          <caret line="1030" column="5" lean-forward="true" selection-start-line="1030" selection-start-column="5" selection-end-line="1030" selection-end-column="5" />
+        <state relative-caret-position="288">
+          <caret line="49" column="18" lean-forward="true" selection-start-line="49" selection-start-column="18" selection-end-line="49" selection-end-column="18" />
           <folding>
-            <element signature="e#2946#3567#0" />
-            <element signature="e#3099#3507#0" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#623#624#0" expanded="true" />
+            <element signature="e#663#664#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HW2/PriorityQueue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        <state relative-caret-position="1326">
+          <caret line="78" column="20" lean-forward="true" selection-start-line="78" selection-start-column="20" selection-end-line="78" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#print#0;class#PriorityQueue#0" />
+            <element signature="e#4779#4780#0" expanded="true" />
+            <element signature="e#4849#4850#0" expanded="true" />
+            <element signature="e#4922#4923#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

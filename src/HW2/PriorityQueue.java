@@ -5,12 +5,12 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class PriorityQueue {
-    ReentrantLock queueLock = new ReentrantLock();
-    Condition notFull = queueLock.newCondition();
-    Condition notEmpty = queueLock.newCondition();
+    private ReentrantLock queueLock = new ReentrantLock();
+    private Condition notFull = queueLock.newCondition();
+    private Condition notEmpty = queueLock.newCondition();
 
     private LinkedList<Node> queue;
-    private int CAPACITY;
+    private final int CAPACITY;
     private int count = 0;
     // 9 is highest priority and 0 is lowest
     public PriorityQueue(int capacity) {
@@ -29,7 +29,7 @@ public class PriorityQueue {
         Node node = new Node(name, priority);
         queueLock.lock();
         try {
-            if (queue.isEmpty()) {
+            if (count == 0) {
                 queue.add(node);
                 count++;
                 notEmpty.signal();
@@ -40,57 +40,83 @@ public class PriorityQueue {
                     notFull.await();
                 } catch (InterruptedException e) {}
             }
-            Node prev = queue.get(0), curr = null;
-            try {
-                prev.lock.lock();
-                curr = prev.next;
-                curr.lock.lock();
-                while (curr.next != null) {
-                    if (prev.priority <= priority && curr.priority > priority) {
-                        queue.add(queue.indexOf(curr), node);
-                        count++;
-                        notEmpty.signal();
-                        return queue.indexOf(node);
-                    }
-                    prev.lock.unlock();
-                    prev = curr;
-                    curr = curr.next;
-                    curr.lock.lock();
-                }
-                queue.add(node);
-                count++;
-                notEmpty.signal();
-                return queue.indexOf(node);
-            } finally {
-                curr.lock.unlock();
-                prev.lock.unlock();
-            }
         } finally {
             queueLock.unlock();
         }
-    }
-
-    public int search(String name) {
-        if (queue.isEmpty())
-            return -1;
-        Node prev = queue.get(0), curr = null;
+        Node prev = queue.getFirst(), curr = null;
         try {
             prev.lock.lock();
             curr = prev.next;
+            if (curr != null)
+                curr.lock.lock();
+            if (priority > prev.priority) {
+                node.next = prev;
+                queue.add(queue.indexOf(prev), node);
+                count++;
+                queueLock.lock();
+                try {
+                    notEmpty.signal();
+                } finally {
+                    queueLock.unlock();
+                }
+                return 0;
+            }
+            while (curr != null) {
+                if (prev.priority >= priority && curr.priority < priority) {
+                    node.next = curr;
+                    queue.add(queue.indexOf(curr), node);
+                    count++;
+                    notEmpty.signal();
+                    return queue.indexOf(node);
+                }
+                prev.lock.unlock();
+                prev = curr;
+                curr = curr.next;
+                if (curr != null)
+                    curr.lock.lock();
+            }
+            queue.add(node);
+            count++;
+            queueLock.lock();
+            try {
+                notEmpty.signal();
+            } finally {
+                queueLock.unlock();
+            }
+            return queue.indexOf(node);
+        } finally {
+            if (curr != null)
+                curr.lock.unlock();
+            prev.lock.unlock();
+        }
+
+    }
+
+    public int search(String name) {
+        if (count == 0)
+            return -1;
+        Node prev = queue.getFirst(), curr = null;
+        try {
+            prev.lock.lock();
+            curr = prev.next;
+            if (prev.name.equals(name))
+                return 0;
+            else if (curr == null)
+                return -1;
             curr.lock.lock();
-            while (curr.next != null) {
+            while (curr != null) {
                 if (curr.name.equals(name))
                     return queue.indexOf(curr);
                 prev.lock.unlock();
                 prev = curr;
                 curr = curr.next;
-                curr.lock.lock();
+                if (curr != null)
+                    curr.lock.lock();
             }
-            if (curr.name.equals(name))         // Name is the last element in the queue
-                return queue.indexOf(curr);
             return -1;                          // Name not found
         } finally {
-            curr.lock.unlock();
+            if (curr != null)
+                curr.lock.unlock();
             prev.lock.unlock();
         }
         // Returns the position of the name in the list;
@@ -115,6 +141,26 @@ public class PriorityQueue {
         // or blocks the thread if the list is empty.
     }
 
+    public void print() {
+        System.out.print("[");
+        for (Node n : queue) {
+            System.out.print("\"" + n.name + ", " + n.priority + "\" ");
+        }
+        System.out.println("]");
+    }
+
+    public void clear() {
+        queue.clear();
+    }
+
+    public LinkedList<Node> getQueue() {
+        return queue;
+    }
+
+    public String peek() {
+        return queue.peekFirst().name;
+    }
+
     class Node {
         ReentrantLock lock = new ReentrantLock();
         String name;
@@ -125,6 +171,12 @@ public class PriorityQueue {
             this.name = name;
             this.priority = priority;
             this.next = null;
+        }
+
+        public Node(String name, int priority, Node next) {
+            this.name = name;
+            this.priority = priority;
+            this.next = next;
         }
 
     }
