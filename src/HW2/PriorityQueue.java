@@ -64,6 +64,7 @@ public class PriorityQueue {
             while (curr != null) {
                 if (prev.priority >= priority && curr.priority < priority) {
                     node.next = curr;
+                    prev.next = node;
                     queue.add(queue.indexOf(curr), node);
                     count++;
                     notEmpty.signal();
