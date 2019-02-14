@@ -8,15 +8,12 @@ public class PriorityQueue {
     private ReentrantLock queueLock = new ReentrantLock();
     private Condition notFull = queueLock.newCondition();
     private Condition notEmpty = queueLock.newCondition();
-
-    private LinkedList<Node> queue;
     private final int CAPACITY;
+    private Node head = null;
     private int count = 0;
     // 9 is highest priority and 0 is lowest
     public PriorityQueue(int capacity) {
-        queue = new LinkedList<>();
         CAPACITY = capacity;
-        // Creates a Priority queue with maximum allowed size as capacity
     }
 
     public int add(String name, int priority) {
@@ -29,12 +26,6 @@ public class PriorityQueue {
         Node node = new Node(name, priority);
         queueLock.lock();
         try {
-            if (count == 0) {
-                queue.add(node);
-                count++;
-                notEmpty.signal();
-                return 0;
-            }
             while (count == CAPACITY) {
                 try {
                     notFull.await();
@@ -43,32 +34,52 @@ public class PriorityQueue {
         } finally {
             queueLock.unlock();
         }
-        Node prev = queue.getFirst(), curr = null;
+        if (count == 0) {                               // Queue is empty
+            node.index = 0;
+            head = node;
+            count++;
+            signalCondition(notEmpty);
+            return 0;
+        }
+        Node prev = head, curr = null;
         try {
             prev.lock.lock();
             curr = prev.next;
             if (curr != null)
                 curr.lock.lock();
-            if (priority > prev.priority) {
+            if (priority > prev.priority) {                 // If new node has highest priority
                 node.next = prev;
-                queue.add(queue.indexOf(prev), node);
-                count++;
-                queueLock.lock();
-                try {
-                    notEmpty.signal();
-                } finally {
-                    queueLock.unlock();
+                node.index = 0;
+                prev.index = 1;
+                while (curr != null) {          // Update indices
+                    curr.index = prev.index + 1;
+                    prev.lock.unlock();
+                    prev = curr;
+                    curr = curr.next;
+                    if (curr != null)
+                        curr.lock.lock();
                 }
+                head = node;
+                count++;
+                signalCondition(notEmpty);
                 return 0;
             }
             while (curr != null) {
                 if (prev.priority >= priority && curr.priority < priority) {
                     node.next = curr;
                     prev.next = node;
-                    queue.add(queue.indexOf(curr), node);
+                    node.index = curr.index;
+                    while (curr != null) {          // Update indices
+                        curr.index++;
+                        prev.lock.unlock();
+                        prev = curr;
+                        curr = curr.next;
+                        if (curr != null)
+                            curr.lock.lock();
+                    }
                     count++;
-                    notEmpty.signal();
-                    return queue.indexOf(node);
+                    signalCondition(notEmpty);
+                    return node.index;
                 }
                 prev.lock.unlock();
                 prev = curr;
@@ -76,15 +87,11 @@ public class PriorityQueue {
                 if (curr != null)
                     curr.lock.lock();
             }
-            queue.add(node);
+            prev.next = node;
+            node.index = prev.index + 1;
             count++;
-            queueLock.lock();
-            try {
-                notEmpty.signal();
-            } finally {
-                queueLock.unlock();
-            }
-            return queue.indexOf(node);
+            signalCondition(notEmpty);
+            return node.index;
         } finally {
             if (curr != null)
                 curr.lock.unlock();
@@ -96,7 +103,7 @@ public class PriorityQueue {
     public int search(String name) {
         if (count == 0)
             return -1;
-        Node prev = queue.getFirst(), curr = null;
+        Node prev = head, curr = null;
         try {
             prev.lock.lock();
             curr = prev.next;
@@ -107,7 +114,7 @@ public class PriorityQueue {
             curr.lock.lock();
             while (curr != null) {
                 if (curr.name.equals(name))
-                    return queue.indexOf(curr);
+                    return curr.index;
                 prev.lock.unlock();
                 prev = curr;
                 curr = curr.next;
@@ -125,41 +132,74 @@ public class PriorityQueue {
     }
 
     public String getFirst() {
-        queueLock.lock();
+        Node prev = head, curr = null;
         try {
+            queueLock.lock();
             while (count == 0) {
                 try {
                     notEmpty.await();
-                } catch (InterruptedException e) {}
+                } catch (InterruptedException e) {
+                }
             }
-            count--;
-            notFull.signal();
-            return queue.poll().name;
         } finally {
             queueLock.unlock();
+        }
+        try {
+            prev.lock.lock();
+            curr = prev.next;
+            if (curr != null) {
+                curr.lock.lock();
+                curr.index = 1;
+                head = curr;
+            } else {
+                head = null;
+            }
+            String result = prev.name;
+            while (curr != null) {
+                curr.index--;
+                prev.lock.unlock();
+                prev = curr;
+                curr = curr.next;
+                if (curr != null)
+                    curr.lock.lock();
+            }
+            queueLock.lock();
+            try {
+                notFull.signal();
+            } finally {
+                queueLock.unlock();
+            }
+            return result;
+        } finally {
+            prev.lock.unlock();
+            if (curr != null)
+                curr.lock.unlock();
         }
         // Retrieves and removes the name with the highest priority in the list,
         // or blocks the thread if the list is empty.
     }
 
+    private void signalCondition(Condition c) {
+        queueLock.lock();
+        try {
+            c.signal();
+        } finally {
+            queueLock.unlock();
+        }
+    }
+
     public void print() {
         System.out.print("[");
-        for (Node n : queue) {
+        Node n = head;
+        while (n != null) {
             System.out.print("\"" + n.name + ", " + n.priority + "\" ");
+            n = n.next;
         }
         System.out.println("]");
     }
 
-    public void clear() {
-        queue.clear();
-    }
-
-    public LinkedList<Node> getQueue() {
-        return queue;
-    }
-
     public String peek() {
-        return queue.peekFirst().name;
+        return head.name;
     }
 
     class Node {
@@ -167,6 +207,7 @@ public class PriorityQueue {
         String name;
         int priority;
         Node next;
+        int index;
 
         public Node(String name, int priority) {
             this.name = name;
