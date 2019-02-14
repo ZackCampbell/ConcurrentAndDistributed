@@ -12,7 +12,7 @@ public class testFairBathroom implements Runnable{
     public void run() {
         Random random = new Random();
         isUT.set(random.nextBoolean());
-        System.out.println(Thread.currentThread().getName() + ": " + isUT.get());
+        //System.out.println(Thread.currentThread().getName() + ": " + isUT.get());
         if (isUT.get()) {
             bathroom.enterBathroomUT();
             // In Bathroom

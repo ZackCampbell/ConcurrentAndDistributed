@@ -52,12 +52,11 @@ public class PriorityQueue {
                 node.index = 0;
                 prev.index = 1;
                 while (curr != null) {          // Update indices
+                    curr.lock.lock();
                     curr.index = prev.index + 1;
                     prev.lock.unlock();
                     prev = curr;
                     curr = curr.next;
-                    if (curr != null)
-                        curr.lock.lock();
                 }
                 head = node;
                 count++;
@@ -65,17 +64,17 @@ public class PriorityQueue {
                 return 0;
             }
             while (curr != null) {
+                curr.lock.lock();
                 if (prev.priority >= priority && curr.priority < priority) {
                     node.next = curr;
                     prev.next = node;
                     node.index = curr.index;
                     while (curr != null) {          // Update indices
+                        curr.lock.lock();
                         curr.index++;
                         prev.lock.unlock();
                         prev = curr;
                         curr = curr.next;
-                        if (curr != null)
-                            curr.lock.lock();
                     }
                     count++;
                     signalCondition(notEmpty);
@@ -84,8 +83,6 @@ public class PriorityQueue {
                 prev.lock.unlock();
                 prev = curr;
                 curr = curr.next;
-                if (curr != null)
-                    curr.lock.lock();
             }
             prev.next = node;
             node.index = prev.index + 1;
@@ -111,15 +108,13 @@ public class PriorityQueue {
                 return 0;
             else if (curr == null)
                 return -1;
-            curr.lock.lock();
             while (curr != null) {
+                curr.lock.lock();
                 if (curr.name.equals(name))
                     return curr.index;
                 prev.lock.unlock();
                 prev = curr;
                 curr = curr.next;
-                if (curr != null)
-                    curr.lock.lock();
             }
             return -1;                          // Name not found
         } finally {
@@ -133,13 +128,12 @@ public class PriorityQueue {
 
     public String getFirst() {
         Node prev = head, curr = null;
+        queueLock.lock();
         try {
-            queueLock.lock();
             while (count == 0) {
                 try {
                     notEmpty.await();
-                } catch (InterruptedException e) {
-                }
+                } catch (InterruptedException e) {}
             }
         } finally {
             queueLock.unlock();
@@ -147,28 +141,19 @@ public class PriorityQueue {
         try {
             prev.lock.lock();
             curr = prev.next;
-            if (curr != null) {
-                curr.lock.lock();
-                curr.index = 1;
-                head = curr;
-            } else {
+            if (curr == null)
                 head = null;
-            }
+            else
+                head = curr;
             String result = prev.name;
             while (curr != null) {
+                curr.lock.lock();
                 curr.index--;
                 prev.lock.unlock();
                 prev = curr;
                 curr = curr.next;
-                if (curr != null)
-                    curr.lock.lock();
             }
-            queueLock.lock();
-            try {
-                notFull.signal();
-            } finally {
-                queueLock.unlock();
-            }
+            signalCondition(notFull);
             return result;
         } finally {
             prev.lock.unlock();
