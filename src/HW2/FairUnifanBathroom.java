@@ -1,3 +1,6 @@
+// EID1: zcc254
+// EID2: ka25635
+
 package HW2;
 
 public class FairUnifanBathroom {
