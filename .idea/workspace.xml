@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="086dc031-0932-4f32-a620-77ba2287a5b2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/HW2/FairUnifanBathroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW2/FairUnifanBathroom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HW2/PriorityQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW2/PriorityQueue.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,7 +16,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ReferenceDoc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1833">
+            <state relative-caret-position="711">
               <caret line="1049" column="5" selection-start-line="1049" selection-start-column="5" selection-end-line="1049" selection-end-column="5" />
               <folding>
                 <element signature="e#2946#3567#0" />
@@ -27,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HW2/FairUnifanBathroom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+            <state relative-caret-position="527">
+              <caret line="31" column="71" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
               <folding>
                 <element signature="e#0#1459#0" expanded="true" />
               </folding>
@@ -39,18 +38,18 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HW2/PriorityQueue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="85">
+              <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
               <folding>
                 <element signature="e#0#6343#0" expanded="true" />
-                <element signature="imports" expanded="true" />
                 <element signature="e#516#517#0" expanded="true" />
                 <element signature="e#551#552#0" expanded="true" />
-                <element signature="e#5818#5819#0" expanded="true" />
-                <element signature="e#5850#5851#0" expanded="true" />
+                <element signature="method#signalCondition#0;class#PriorityQueue#0" />
+                <element signature="method#print#0;class#PriorityQueue#0" />
+                <element signature="class#Node#0;class#PriorityQueue#0" />
               </folding>
             </state>
           </provider>
@@ -149,7 +148,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550187423519" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550187861158" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Multicore/Multicore" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -172,7 +171,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.testBathroom.capacity_test">
+  <component name="RunManager" selected="JUnit.testPriorityQueue.sanityTest">
     <configuration name="testFairBathroom" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="HW2.testFairBathroom" />
       <module name="ConcurrentAndDistributed" />
@@ -182,36 +181,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="testBathroom" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ConcurrentAndDistributed" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="HW2.new_sample_grader.grader_pkg.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="HW2.new_sample_grader.grader_pkg" />
-      <option name="MAIN_CLASS_NAME" value="HW2.new_sample_grader.grader_pkg.testBathroom" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="testBathroom.capacity_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ConcurrentAndDistributed" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="HW2.new_sample_grader.grader_pkg.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="HW2.new_sample_grader.grader_pkg" />
-      <option name="MAIN_CLASS_NAME" value="HW2.new_sample_grader.grader_pkg.testBathroom" />
-      <option name="METHOD_NAME" value="capacity_test" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -232,29 +201,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testPriorityQueue.testPQueueAdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ConcurrentAndDistributed" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="HW2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="HW2" />
-      <option name="MAIN_CLASS_NAME" value="HW2.testPriorityQueue" />
-      <option name="METHOD_NAME" value="testPQueueAdd" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <list>
+      <item itemvalue="Application.testFairBathroom" />
+      <item itemvalue="JUnit.testPriorityQueue.sanityTest" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.testBathroom.capacity_test" />
-        <item itemvalue="JUnit.testBathroom" />
         <item itemvalue="Application.testFairBathroom" />
         <item itemvalue="JUnit.testPriorityQueue.sanityTest" />
-        <item itemvalue="JUnit.testPriorityQueue.testPQueueAdd" />
       </list>
     </recent_temporary>
   </component>
@@ -313,7 +267,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62874000" />
+    <option name="totallyTimeSpent" value="63308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -357,13 +311,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Symbols.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="43" lean-forward="true" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HW1/PMerge.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -474,9 +421,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Symbols.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="43" lean-forward="true" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ReferenceDoc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1833">
+        <state relative-caret-position="711">
           <caret line="1049" column="5" selection-start-line="1049" selection-start-column="5" selection-end-line="1049" selection-end-column="5" />
           <folding>
             <element signature="e#2946#3567#0" />
@@ -485,27 +439,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HW2/FairUnifanBathroom.java">
+    <entry file="file://$PROJECT_DIR$/src/HW2/PriorityQueue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+        <state relative-caret-position="85">
+          <caret line="5" column="18" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
           <folding>
-            <element signature="e#0#1459#0" expanded="true" />
+            <element signature="e#0#6343#0" expanded="true" />
+            <element signature="e#516#517#0" expanded="true" />
+            <element signature="e#551#552#0" expanded="true" />
+            <element signature="method#signalCondition#0;class#PriorityQueue#0" />
+            <element signature="method#print#0;class#PriorityQueue#0" />
+            <element signature="class#Node#0;class#PriorityQueue#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HW2/PriorityQueue.java">
+    <entry file="file://$PROJECT_DIR$/src/HW2/FairUnifanBathroom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="527">
+          <caret line="31" column="71" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
           <folding>
-            <element signature="e#0#6343#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#516#517#0" expanded="true" />
-            <element signature="e#551#552#0" expanded="true" />
-            <element signature="e#5818#5819#0" expanded="true" />
-            <element signature="e#5850#5851#0" expanded="true" />
+            <element signature="e#0#1459#0" expanded="true" />
           </folding>
         </state>
       </provider>

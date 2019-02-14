@@ -15,7 +15,7 @@ public class FairUnifanBathroom {
   		int myTicket = ticket;
   		ticket++;
 		System.out.println(Thread.currentThread().getName() + " is entering (UT) with ticket: " + myTicket);
-		while (numInBathroom >= CAPACITY || isOU || myTicket > counter + numInBathroom) {
+		while (numInBathroom >= CAPACITY || isOU || myTicket != counter) {
 			try {
 				wait();
 			} catch (InterruptedException e) {}
@@ -29,7 +29,7 @@ public class FairUnifanBathroom {
   		int myTicket = ticket;
   		ticket++;
 		System.out.println(Thread.currentThread().getName() + " is entering (OU) with ticket: " + myTicket);
-  		while (numInBathroom >= CAPACITY || isUT || myTicket > counter + numInBathroom) {
+  		while (numInBathroom >= CAPACITY || isUT || myTicket != counter) {
   			try {
   				wait();
 			} catch (InterruptedException e) {}
