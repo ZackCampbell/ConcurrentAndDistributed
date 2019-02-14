@@ -1,25 +1,42 @@
-package HW2;
+/*
+ * EID's of group members
+ *
+ */
+
+import jdk.jshell.execution.Util;
 
 public class MonitorCyclicBarrier {
-    // Implement using monitors
 
-    public MonitorCyclicBarrier(int parties) {
-        // Creates a new CyclicBarrier that will release threads only when
-        // the given number of threads are waiting upon it
-    }
+	private int index;
+	private int count;
+	private int parties;
 
-    int await() throws InterruptedException {
-        // Waits until all parties have invoked await on this CyclicBarrier.
-        // If the current thread is not the last to arrive then it is
-        // disabled for thread scheduling purposes and lies dormant until
-        // the last thread arrives.
-        // Returns: the arrival index of the current thread, where index
-        // (parties - 1) indicates the first to arrive and zero indicates
-        // the last to arrive.
-         int index = 0;
-		
-          // you need to write this code
-	    return index;
-    }
+	public MonitorCyclicBarrier(int parties) {
+		this.index = parties - 1;
+		this.count = 0;
+		this.parties = parties;
+	}
 
+	public int await() throws InterruptedException {
+
+
+		synchronized (this) {
+			int threatintdex = index;
+			index--;
+			count++;
+
+			if( count < this.parties ){ 
+					wait();
+			}
+
+			if(threatintdex == 0){
+				index = this.parties - 1;
+				count = 0;
+				notifyAll();
+			}
+
+			// you need to write this code
+			return threatintdex;
+		}
+	}
 }
