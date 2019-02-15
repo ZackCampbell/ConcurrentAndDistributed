@@ -1,4 +1,4 @@
-package HW2
+package HW2;
 
 public class testCyclicBarrier implements Runnable {
 	final static int SIZE = 5;
