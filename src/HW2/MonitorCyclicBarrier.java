@@ -1,8 +1,8 @@
 /*
- * EID's of group members
- *
+ * EID1: zcc254
+ * EID2: ka25635
  */
-
+package HW2;
 import jdk.jshell.execution.Util;
 
 public class MonitorCyclicBarrier {

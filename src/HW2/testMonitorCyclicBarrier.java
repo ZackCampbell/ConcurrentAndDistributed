@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
 
-public class testCyclicBarrier {
+public class testMonitorCyclicBarrier {
 	// THIS TEST WILL ONLY WORK CORRECTLY IF NUMTHREADS = PARTYSIZE!!!
 	final static int NUMTHREADS = 100;
 	final static int PARTYSIZE = 100;
@@ -35,9 +35,9 @@ public class testCyclicBarrier {
 	
 	class SimpleTester implements Runnable
 	{
-		final CyclicBarrier gate;
+		final MonitorCyclicBarrier gate;
 		final int id;
-		public SimpleTester(CyclicBarrier gate, int id) 
+		public SimpleTester(MonitorCyclicBarrier gate, int id) 
 		{
 			this.gate = gate;
 			this.id = id;
@@ -66,7 +66,7 @@ public class testCyclicBarrier {
   @Test
   public void equalPartyNumThreads_test()
   {
-    CyclicBarrier gate = new CyclicBarrier(PARTYSIZE); 
+    MonitorCyclicBarrier gate = new MonitorCyclicBarrier(PARTYSIZE); 
 		Thread[] t = new Thread[NUMTHREADS];
 		
 		int exit_cnt = 0;
@@ -88,6 +88,7 @@ public class testCyclicBarrier {
 			t[i].start();
 		}
 
+int count_ = 0;
     while (aliveCount.get() >= PARTYSIZE || !history.isEmpty())
     {
       MarkedStatus s = history.poll();
@@ -102,6 +103,7 @@ public class testCyclicBarrier {
           exit_cnt++;
           // assert that a thread leaving hasn't already left with the current leaving
           // party
+
           Assert.assertTrue(enter_cnt/PARTYSIZE != enter_steps[s.id]/PARTYSIZE);
          	enter_steps[s.id]= enter_cnt; 
         }

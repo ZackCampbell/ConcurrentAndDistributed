@@ -1,7 +1,9 @@
 /*
- * EID's of group members
- *
+ *  EID1: zcc254
+ *  EID2: ka25635
  */
+package HW2;
+
 import java.util.concurrent.Semaphore; // for implementation using Semaphores
 
 public class CyclicBarrier {
