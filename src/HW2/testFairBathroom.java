@@ -5,7 +5,7 @@ import java.util.Random;
 public class testFairBathroom implements Runnable{
     final static int PEOPLE = 13;
     ThreadLocal<Boolean> isUT = new ThreadLocal<>();
-    volatile FairUnifanBathroom bathroom = new FairUnifanBathroom();
+    FairUnifanBathroom bathroom = new FairUnifanBathroom();
     public testFairBathroom() {
     }
 

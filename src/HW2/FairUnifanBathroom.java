@@ -14,7 +14,7 @@ public class FairUnifanBathroom {
   	public synchronized void enterBathroomUT() {
   		int myTicket = ticket;
   		ticket++;
-		System.out.println(Thread.currentThread().getName() + " is entering (UT) with ticket: " + myTicket);
+		//System.out.println(Thread.currentThread().getName() + " is entering (UT) at: " + System.nanoTime());
 		while (numInBathroom >= CAPACITY || isOU || myTicket != counter) {
 			try {
 				wait();
@@ -28,7 +28,7 @@ public class FairUnifanBathroom {
 	public synchronized void enterBathroomOU() {
   		int myTicket = ticket;
   		ticket++;
-		System.out.println(Thread.currentThread().getName() + " is entering (OU) with ticket: " + myTicket);
+		//System.out.println(Thread.currentThread().getName() + " is entering (OU) at: " + System.nanoTime());
   		while (numInBathroom >= CAPACITY || isUT || myTicket != counter) {
   			try {
   				wait();
@@ -44,7 +44,7 @@ public class FairUnifanBathroom {
   			isUT = false;
 		}
   		numInBathroom--;
-		System.out.println("UT Fan leaving");
+		//System.out.println(Thread.currentThread().getName() + " (UT) leaving at " + System.nanoTime());
   		notifyAll();
 	}
 
@@ -53,7 +53,7 @@ public class FairUnifanBathroom {
   			isOU = false;
 		}
   		numInBathroom--;
-		System.out.println("OU Fan leaving");
+		//System.out.println(Thread.currentThread().getName() + " (OU) leaving at " + System.nanoTime());
   		notifyAll();
 	}
 }

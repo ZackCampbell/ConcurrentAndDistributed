@@ -1,63 +1,48 @@
 package HW2;
-
-import org.junit.Before;
+import java.util.*;
+import org.junit.Assert;
 import org.junit.Test;
+import org.junit.Before;
 
-import java.util.LinkedList;
-import java.util.Random;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+public class testPriorityQueue
+{
+  @Test
+  public void serialAdd_test()
+  {
+    final PriorityQueue q = new PriorityQueue(10); 
+	
+    int first = q.add("first", 9);
+    int second = q.add("second", 0);
+    int third = q.add("third", 0);
 
-import static org.junit.Assert.assertEquals;
+    Assert.assertTrue(first == 0 
+      && second == 1
+      && third == 2);
+  }
 
-public class testPriorityQueue {
-    private PriorityQueue q;
-    private Random rand = new Random();
+  @Test
+  public void serialSearch_test()
+  {
+    final PriorityQueue q = new PriorityQueue(10); 
+	
+    q.add("first", 9);
+    q.add("second", 0);
+    q.add("a", 0);
+    q.add("b", 0);
+    q.add("c", 1);
 
-    private boolean isSorted(LinkedList<PriorityQueue.Node> q) {
-        for (int i = 1; i < q.size(); i++) {
-            if (q.get(i).priority > q.get(i-1).priority)
-                return false;
-        }
-        return true;
-    }
+    Assert.assertTrue(q.search("second") == 2 && q.search("") == -1);
+  }
 
+  @Test
+  public void serialGetFirst_test()
+  {
+    final PriorityQueue q = new PriorityQueue(10);
 
-    @Before
-    public void setUp() {
-        q = new PriorityQueue(5);
-    }
+    q.add("zero", 0);
+    q.add("one", 1);
+    q.add("two", 2);
 
-    @Test
-    public void sanityTest() {
-        q.add("TestSeqEntry", 2);
-        q.add("TestSeqEntry2", 1);
-        q.add("TestSeqEntry3", 4);
-        q.add("TestSeqEntry4", 9);
-        q.add("TestSeqAddAtEnd", 0);
-//        assert(isSorted(q.getQueue()));
-        String expectedFirst = q.peek();
-        String first = q.getFirst();
-        assertEquals(expectedFirst, first);
-//        assert(isSorted(q.getQueue()));
-//        System.out.println("Testing adding over capacity\n-----------------------");
-//        q.add("TestingEntry5", 5);
-//        q.add("TestingEntry6", 6);
-//        q.print();
-        int search1 = q.search("TestSeqEntry");
-        q.print();
-        assertEquals(1, search1);
-//        q.clear();
-    }
-
-    @Test
-    public void testPQueueAdd() {
-
-    }
-
-    @Test
-    public void testPQueueRemove() {
-
-    }
-
+    Assert.assertTrue(q.getFirst().equals("two")); 
+  }
 }
