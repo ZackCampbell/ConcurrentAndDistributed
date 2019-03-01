@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="086dc031-0932-4f32-a620-77ba2287a5b2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/CyclicBarrier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/CyclicBarrier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/MonitorCyclicBarrier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/MonitorCyclicBarrier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testCyclicBarrier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testCyclicBarrier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HW2/CyclicBarrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW2/CyclicBarrier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HW2/MonitorCyclicBarrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW2/MonitorCyclicBarrier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HW2/testCyclicBarrier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW2/testCyclicBarrier2.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ReferenceDoc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="711">
-              <caret line="1049" column="5" selection-start-line="1049" selection-start-column="5" selection-end-line="1049" selection-end-column="5" />
+            <state relative-caret-position="247">
+              <caret line="793" column="3" selection-start-line="793" selection-start-column="3" selection-end-line="793" selection-end-column="3" />
               <folding>
                 <element signature="e#2946#3567#0" />
                 <element signature="e#3099#3507#0" />
@@ -32,83 +26,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HW2/CyclicBarrier.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="3" lean-forward="true" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
-              <folding>
-                <element signature="e#0#995#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/HW2/MonitorCyclicBarrier.java">
+        <entry file="file://$PROJECT_DIR$/src/HW3/CarClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+            <state relative-caret-position="153">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HW2/testCyclicBarrier.java">
+        <entry file="file://$PROJECT_DIR$/src/HW3/CarServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HW2/testMonitorCyclicBarrier.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HW2/FairUnifanBathroom.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="55" column="10" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#1459#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HW2/PriorityQueue.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#6343#0" expanded="true" />
-                <element signature="e#516#517#0" expanded="true" />
-                <element signature="e#551#552#0" expanded="true" />
-                <element signature="method#signalCondition#0;class#PriorityQueue#0" />
-                <element signature="method#print#0;class#PriorityQueue#0" />
-                <element signature="class#Node#0;class#PriorityQueue#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/HW2/testCyclicBarrier2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-              <folding>
-                <element signature="e#201#202#0" expanded="true" />
-                <element signature="e#224#225#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="221">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
@@ -127,6 +58,7 @@
       <find>queue</find>
       <find>list</find>
       <find>bakery</find>
+      <find>semaphores</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -153,6 +85,8 @@
         <option value="$PROJECT_DIR$/src/HW2/testMonitorCyclicBarrier.java" />
         <option value="$PROJECT_DIR$/src/HW2/CyclicBarrier.java" />
         <option value="$PROJECT_DIR$/src/HW2/MonitorCyclicBarrier.java" />
+        <option value="$PROJECT_DIR$/src/HW3/CarClient.java" />
+        <option value="$PROJECT_DIR$/src/HW3/CarServer.java" />
       </list>
     </option>
   </component>
@@ -170,8 +104,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -194,7 +128,7 @@
               <item name="DistributedSystems" type="b2602c69:ProjectViewProjectNode" />
               <item name="ConcurrentAndDistributed" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="HW2" type="462c0819:PsiDirectoryNode" />
+              <item name="HW3" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -209,7 +143,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550199325575" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551409698149" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Multicore/Multicore" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -232,92 +166,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.testMonitorCyclicBarrier">
-    <configuration name="testCyclicBarrier2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="HW2.testCyclicBarrier2" />
+  <component name="RunManager" selected="Application.CarClient">
+    <configuration name="CarClient" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HW3.CarClient" />
       <module name="ConcurrentAndDistributed" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="HW2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="PROGRAM_PARAMETERS" value="./cmdFile 3" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testBathroom" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CarServer" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HW3.CarServer" />
       <module name="ConcurrentAndDistributed" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="HW2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="HW2" />
-      <option name="MAIN_CLASS_NAME" value="HW2.testBathroom" />
+      <option name="PROGRAM_PARAMETERS" value="inventory" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testCyclicBarrier" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ConcurrentAndDistributed" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="HW2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="HW2" />
-      <option name="MAIN_CLASS_NAME" value="HW2.testCyclicBarrier" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="testMonitorCyclicBarrier" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ConcurrentAndDistributed" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="HW2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="HW2" />
-      <option name="MAIN_CLASS_NAME" value="HW2.testMonitorCyclicBarrier" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="testPriorityQueue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ConcurrentAndDistributed" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="HW2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="HW2" />
-      <option name="MAIN_CLASS_NAME" value="HW2.testPriorityQueue" />
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="HW3.CarClient" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.testBathroom" />
-      <item itemvalue="JUnit.testPriorityQueue" />
-      <item itemvalue="Application.testCyclicBarrier2" />
-      <item itemvalue="JUnit.testCyclicBarrier" />
-      <item itemvalue="JUnit.testMonitorCyclicBarrier" />
+      <item itemvalue="Application.CarClient" />
+      <item itemvalue="Application.CarServer" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.testMonitorCyclicBarrier" />
-        <item itemvalue="JUnit.testCyclicBarrier" />
-        <item itemvalue="Application.testCyclicBarrier2" />
-        <item itemvalue="JUnit.testBathroom" />
-        <item itemvalue="JUnit.testPriorityQueue" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -338,13 +213,14 @@
       <workItem from="1549828676537" duration="9103000" />
       <workItem from="1550015635816" duration="8781000" />
       <workItem from="1550069941865" duration="13204000" />
+      <workItem from="1550546636678" duration="391000" />
+      <workItem from="1550547183418" duration="2339000" />
+      <workItem from="1550613618016" duration="684000" />
+      <workItem from="1551408516646" duration="1143000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="testPriorityQueue_sanityTest - 2019.02.13 at 20h 11m 13s.xml">
-      <configuration name="testPriorityQueue.sanityTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="testPriorityQueue_sanityTest - 2019.02.13 at 20h 15m 40s.xml">
       <configuration name="testPriorityQueue.sanityTest" configurationId="JUnit" />
     </history-entry>
@@ -372,15 +248,17 @@
     <history-entry file="testMonitorCyclicBarrier - 2019.02.14 at 20h 50m 33s.xml">
       <configuration name="testMonitorCyclicBarrier" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestPSort - 2019.02.19 at 16h 41m 05s.xml">
+      <configuration name="TestPSort" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67944000" />
+    <option name="totallyTimeSpent" value="73115000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13859275" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14498934" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -401,7 +279,7 @@
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info active="true" anchor="right" id="Run" order="1" visible="true" weight="0.1924307" />
+      <window_info active="true" anchor="right" id="Run" order="1" visible="true" weight="0.30277187" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Maven" order="4" />
@@ -425,37 +303,6 @@
             <element signature="method#MergeThread#0;class#MergeThread#0" />
             <element signature="method#init#0;class#MergeThread#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HW1/PSort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-          <folding>
-            <element signature="method#partition#0;class#PSort#0" />
-            <element signature="method#insertSort#0;class#PSort#0" />
-            <element signature="method#swap#0;class#PSort#0" />
-            <element signature="method#printArray#0;class#PSort#0" />
-            <element signature="method#compute#0;class#PSort#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HW1/TestPSort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -484,39 +331,6 @@
     <entry file="file://$PROJECT_DIR$/src/HW2/new_sample_grader/grader_pkg/testMonitorCyclicBarrier.java" />
     <entry file="file://$PROJECT_DIR$/src/HW2/new_sample_grader/grader_pkg/testCyclicBarrier.java" />
     <entry file="file://$PROJECT_DIR$/src/HW2/new_sample_grader/grader_pkg/testBathroom.java" />
-    <entry file="file://$PROJECT_DIR$/src/Symbols.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="43" lean-forward="true" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReferenceDoc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="711">
-          <caret line="1049" column="5" selection-start-line="1049" selection-start-column="5" selection-end-line="1049" selection-end-column="5" />
-          <folding>
-            <element signature="e#2946#3567#0" />
-            <element signature="e#3099#3507#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HW2/PriorityQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#6343#0" expanded="true" />
-            <element signature="e#516#517#0" expanded="true" />
-            <element signature="e#551#552#0" expanded="true" />
-            <element signature="method#signalCondition#0;class#PriorityQueue#0" />
-            <element signature="method#print#0;class#PriorityQueue#0" />
-            <element signature="class#Node#0;class#PriorityQueue#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HW2/testPriorityQueue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -550,17 +364,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HW2/testCyclicBarrier2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding>
-            <element signature="e#201#202#0" expanded="true" />
-            <element signature="e#224#225#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HW2/testCyclicBarrier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -577,28 +380,112 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HW2/CyclicBarrier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="3" lean-forward="true" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#995#0" expanded="true" />
-          </folding>
+        <state>
+          <caret line="3" column="3" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HW2/FairUnifanBathroom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
+        <state relative-caret-position="918">
           <caret line="55" column="10" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HW2/PriorityQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
           <folding>
-            <element signature="e#0#1459#0" expanded="true" />
+            <element signature="e#0#6343#0" expanded="true" />
+            <element signature="method#signalCondition#0;class#PriorityQueue#0" />
+            <element signature="method#print#0;class#PriorityQueue#0" />
+            <element signature="class#Node#0;class#PriorityQueue#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HW2/testCyclicBarrier2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding>
+            <element signature="e#201#202#0" expanded="true" />
+            <element signature="e#224#225#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HW2/MonitorCyclicBarrier.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Symbols.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="43" lean-forward="true" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HW1/TestPSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HW1/PSort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+          <folding>
+            <element signature="method#partition#0;class#PSort#0" />
+            <element signature="method#insertSort#0;class#PSort#0" />
+            <element signature="method#swap#0;class#PSort#0" />
+            <element signature="method#printArray#0;class#PSort#0" />
+            <element signature="method#compute#0;class#PSort#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ReferenceDoc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="793" column="3" selection-start-line="793" selection-start-column="3" selection-end-line="793" selection-end-column="3" />
+          <folding>
+            <element signature="e#2946#3567#0" />
+            <element signature="e#3099#3507#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HW3/cmdFile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HW3/CarServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HW3/CarClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
