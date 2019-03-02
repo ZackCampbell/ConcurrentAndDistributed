@@ -56,8 +56,6 @@ public class CarClient {
                         retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
                     }
                     System.out.println(retString);      // TODO: format returned string and put into output file
-                    // TODO: send appropriate command to the server and display the
-                    // appropriate responses form the server
                 } else if (tokens[0].equals("return")) {
                     // TODO: send appropriate command to the server and display the
                     // appropriate responses form the server
@@ -67,7 +65,7 @@ public class CarClient {
                     } else {
                         retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
                     }
-                    System.out.println(retString);      // TODO: format return string
+                    System.out.println(retString);      // TODO: format return string and put into output file
                 } else if (tokens[0].equals("list")) {
                     if (mode.equals("T")) {
 
@@ -90,6 +88,9 @@ public class CarClient {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // TODO: create output file and copy contents of retStringList into it
+
     }
 
     private static String sr_UDP(int udpPort, int len, InetAddress ia, DatagramSocket clientUDPSocket, String cmd) throws IOException {
