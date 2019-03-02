@@ -18,20 +18,6 @@ public class CarServer {
     }
     ArrayList<RentalRecord> records = new ArrayList<>();
 
-    public static void parseInventoryFile(String fileName) {
-        try {
-            Scanner sc = new Scanner(new FileReader(fileName));
-            while (sc.hasNextLine()) {
-
-
-
-                System.out.println(sc.nextLine());
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void main (String[] args) {
         int tcpPort;
         int udpPort;
@@ -43,7 +29,18 @@ public class CarServer {
         tcpPort = 7000;
         udpPort = 8000;
 
-        parseInventoryFile(fileName);
+        CarInventory inv = new CarInventory();
+        try {
+            Scanner sc = new Scanner(new FileReader(fileName));
+            while (sc.hasNextLine()) {
+                String entry = sc.nextLine();
+                String[] tokens = entry.split(" ");
+                inv.insert(tokens[0], tokens[1], Integer.parseInt(tokens[2]));
+            }
+            System.out.println(inv.getInventory());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         // TODO: handle request from clients
     }
 }

@@ -2,101 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="086dc031-0932-4f32-a620-77ba2287a5b2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/HW3/CarInventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/AndersonLock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/AndersonLock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Attempt1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Attempt1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Attempt2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Attempt2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Attempt3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Attempt3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/BCell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/BCell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Bakery.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Bakery.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/BinarySemaphore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/BinarySemaphore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/BoundedBuffer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/BoundedBuffer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/BoundedBufferMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/BoundedBufferMonitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/CLHLock$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/CLHLock$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/CLHLock$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/CLHLock$Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/CLHLock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/CLHLock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Cell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Cell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Consumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Consumer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/CountingSemaphore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/CountingSemaphore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/DiningMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/DiningMonitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/DiningPhilosopher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/DiningPhilosopher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/FastMutex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/FastMutex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Fibonacci.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Fibonacci.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Fibonacci2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Fibonacci2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Fibonacci3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Fibonacci3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/FilterAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/FilterAlgorithm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Fischer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Fischer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/GetAndGetAndSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/GetAndGetAndSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/GetAndSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/GetAndSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW1/MergeThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW1/MergeThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW1/PMerge.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW1/PMerge.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW1/PSort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW1/PSort.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW1/TestPSort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW1/TestPSort.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/CyclicBarrier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/CyclicBarrier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/FairUnifanBathroom.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/FairUnifanBathroom.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/MonitorCyclicBarrier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/MonitorCyclicBarrier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/PriorityQueue$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/PriorityQueue$Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/PriorityQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/PriorityQueue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testBathroom$CapacityTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testBathroom$CapacityTester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testBathroom$Team.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testBathroom$Team.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testBathroom.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testBathroom.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testCyclicBarrier$MarkedStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testCyclicBarrier$MarkedStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testCyclicBarrier$SimpleTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testCyclicBarrier$SimpleTester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testCyclicBarrier$Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testCyclicBarrier$Status.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testCyclicBarrier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testCyclicBarrier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testCyclicBarrier2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testCyclicBarrier2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testFairBathroom.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testFairBathroom.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testMonitorCyclicBarrier$MarkedStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testMonitorCyclicBarrier$MarkedStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testMonitorCyclicBarrier$SimpleTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testMonitorCyclicBarrier$SimpleTester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testMonitorCyclicBarrier$Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testMonitorCyclicBarrier$Status.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testMonitorCyclicBarrier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testMonitorCyclicBarrier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testPriorityQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testPriorityQueue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testPriorityQueue2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW2/testPriorityQueue2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW3/CarClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW3/CarClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW3/CarServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW3/CarServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HWMutex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HWMutex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HelloWorldThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HelloWorldThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/LFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/LFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/ListQueue$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/ListQueue$Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/ListQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/ListQueue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Lock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Lock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/LockFreeStack.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/LockFreeStack.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MBoundedBufferMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MBoundedBufferMonitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MCSLock$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MCSLock$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MCSLock$QNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MCSLock$QNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MCSLock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MCSLock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/META-INF/ConcurrentAndDistributed.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MRSW.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MRSW.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MultiBoundedBufferMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MultiBoundedBufferMonitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MultiValued.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MultiValued.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MultiWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MultiWriter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MutexWithBackoff.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MutexWithBackoff.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MyAtomicInteger.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/MyAtomicInteger.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/PetersonAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/PetersonAlgorithm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Philosopher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Philosopher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Producer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Producer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/ReaderWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/ReaderWriter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/ReferenceDoc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/ReferenceDoc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/RegularBoolean.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/RegularBoolean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Resource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Resource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/RunnableExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/RunnableExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/RunnableExampleBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/RunnableExampleBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/SRSW.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/SRSW.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/SafeBoolean.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/SafeBoolean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/SingleQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/SingleQueue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Splitter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Splitter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Stack.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Stack.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Symbols.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Symbols.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Synch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Synch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/TestAndSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/TestAndSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/TestMutualExclusion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/TestMutualExclusion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/TicketMutex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/TicketMutex.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/UnboundedQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/UnboundedQueue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/Util.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/myLock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/myLock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HW3/CarInventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW3/CarInventory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HW3/CarServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW3/CarServer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -139,14 +45,18 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HW3/CarInventory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="27" column="35" lean-forward="true" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
+            <state relative-caret-position="306">
+              <caret line="18" column="56" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
               <folding>
-                <element signature="e#1767#1768#0" expanded="true" />
-                <element signature="e#1852#1853#0" expanded="true" />
+                <element signature="e#414#415#0" expanded="true" />
+                <element signature="e#481#482#0" expanded="true" />
+                <element signature="e#462#463#0" expanded="true" />
+                <element signature="e#506#507#0" expanded="true" />
+                <element signature="e#1822#1823#0" expanded="true" />
+                <element signature="e#1895#1896#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -157,11 +67,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HW3/CarServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
+            <state relative-caret-position="420">
+              <caret line="37" column="78" selection-start-line="37" selection-start-column="78" selection-end-line="37" selection-end-column="78" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -211,8 +121,8 @@
         <option value="$PROJECT_DIR$/src/HW2/CyclicBarrier.java" />
         <option value="$PROJECT_DIR$/src/HW2/MonitorCyclicBarrier.java" />
         <option value="$PROJECT_DIR$/src/HW3/CarClient.java" />
-        <option value="$PROJECT_DIR$/src/HW3/CarInventory.java" />
         <option value="$PROJECT_DIR$/src/HW3/CarServer.java" />
+        <option value="$PROJECT_DIR$/src/HW3/CarInventory.java" />
       </list>
     </option>
   </component>
@@ -269,7 +179,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551548815348" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551549575422" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -292,7 +202,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.CarClient">
+  <component name="RunManager" selected="Application.CarServer">
     <configuration name="CarClient" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="HW3.CarClient" />
       <module name="ConcurrentAndDistributed" />
@@ -343,7 +253,7 @@
       <workItem from="1550547183418" duration="2339000" />
       <workItem from="1550613618016" duration="684000" />
       <workItem from="1551408516646" duration="1143000" />
-      <workItem from="1551543135609" duration="4365000" />
+      <workItem from="1551543135609" duration="5125000" />
     </task>
     <servers />
   </component>
@@ -380,13 +290,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77480000" />
+    <option name="totallyTimeSpent" value="78240000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14697987" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14697987" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -407,7 +317,7 @@
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Run" order="1" visible="true" weight="0.28993288" />
+      <window_info active="true" anchor="right" id="Run" order="1" visible="true" weight="0.28993288" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Maven" order="4" />
@@ -591,8 +501,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HW3/inventory.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/HW3/out_1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HW3/CarClient.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -601,30 +515,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HW3/out_1.txt">
+    <entry file="file://$PROJECT_DIR$/src/HW3/inventory.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HW3/CarServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+        <state relative-caret-position="420">
+          <caret line="37" column="78" selection-start-line="37" selection-start-column="78" selection-end-line="37" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HW3/CarInventory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="27" column="35" lean-forward="true" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
+        <state relative-caret-position="306">
+          <caret line="18" column="56" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
           <folding>
-            <element signature="e#1767#1768#0" expanded="true" />
-            <element signature="e#1852#1853#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/HW3/CarServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="45" column="34" selection-start-line="45" selection-start-column="34" selection-end-line="45" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#414#415#0" expanded="true" />
+            <element signature="e#481#482#0" expanded="true" />
+            <element signature="e#462#463#0" expanded="true" />
+            <element signature="e#506#507#0" expanded="true" />
+            <element signature="e#1822#1823#0" expanded="true" />
+            <element signature="e#1895#1896#0" expanded="true" />
           </folding>
         </state>
       </provider>
