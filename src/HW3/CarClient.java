@@ -24,8 +24,8 @@ public class CarClient {
         String commandFile = args[0];
         clientId = Integer.parseInt(args[1]);
         hostAddress = "localhost";
-        tcpPort = 7000;// hardcoded -- must match the server's tcp port
-        udpPort = 8000;// hardcoded -- must match the server's udp port
+        tcpPort = 7000;     // hardcoded -- must match the server's tcp port
+        udpPort = 8000;     // hardcoded -- must match the server's udp port
 
         String mode = "U";
         ArrayList<String> retStringList = new ArrayList<>();
@@ -36,8 +36,6 @@ public class CarClient {
             DataOutputStream tcpOutput = new DataOutputStream(clientTCPSocket.getOutputStream());
             Scanner tcpReturn = new Scanner(clientTCPSocket.getInputStream());
             DatagramSocket clientUDPSocket = new DatagramSocket();
-            DatagramPacket sPacket, rPacket;
-            byte[] sBuffer, rBuffer;
             while(sc.hasNextLine()) {
                 String cmd = sc.nextLine();
                 String[] tokens = cmd.split(" ");
@@ -55,32 +53,44 @@ public class CarClient {
                     } else {
                         retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
                     }
-                    System.out.println(retString);      // TODO: format returned string and put into output file
+                    System.out.println(retString);
+                    retStringList.add(retString);
                 } else if (tokens[0].equals("return")) {
-                    // TODO: send appropriate command to the server and display the
-                    // appropriate responses form the server
+                    if (mode.equals("T")) {
+                        retString = sr_TCP(tcpOutput, tcpReturn, cmd);
+                    } else {
+                        retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
+                    }
+                    System.out.println(retString);
+                    retStringList.add(retString);
                 } else if (tokens[0].equals("inventory")) {
                     if (mode.equals("T")) {
                         retString = sr_TCP(tcpOutput, tcpReturn, cmd);
                     } else {
                         retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
                     }
-                    System.out.println(retString);      // TODO: format return string and put into output file
+                    System.out.println(retString);
+                    retStringList.add(retString);
                 } else if (tokens[0].equals("list")) {
                     if (mode.equals("T")) {
-
+                        retString = sr_TCP(tcpOutput, tcpReturn, cmd);
                     } else {
-
+                        retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
                     }
-                    // TODO: send appropriate command to the server and display the
-                    // appropriate responses form the server
+                    System.out.println(retString);
+                    retStringList.add(retString);
                 } else if (tokens[0].equals("exit")) {
                     if (mode.equals("T")) {
+                        retString = sr_TCP(tcpOutput, tcpReturn, cmd);
                         tcpOutput.close();
                         tcpReturn.close();
                         clientTCPSocket.close();
+                    } else {
+                        retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
                     }
-                    // TODO: send appropriate command to the server
+                    System.out.println(retString);
+                    retStringList.add(retString);
+                    break;
                 } else {
                     System.out.println("ERROR: No such command");
                 }
@@ -89,7 +99,18 @@ public class CarClient {
             e.printStackTrace();
         }
 
-        // TODO: create output file and copy contents of retStringList into it
+        try {
+            String currentDir = new File(".").getCanonicalPath();
+            File outputFile = new File(currentDir + "/out_" + clientId + ".txt");
+            FileWriter writer = new FileWriter(outputFile);
+            for (String s : retStringList) {
+                String temp = s + "\n";
+                writer.append(temp);
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
