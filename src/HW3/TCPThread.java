@@ -6,17 +6,23 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.Callable;
 
-public class TCPThread extends Thread {
+public class TCPThread implements Callable<String> {
     Socket s;
     CarInventory carInventory;
+    ArrayList<CarServer.RentalRecord> records;
 
-    public TCPThread(Socket s, CarInventory carInventory){
+    public TCPThread(Socket s, CarInventory carInventory, ArrayList<CarServer.RentalRecord> records){
         this.s = s;
         this.carInventory = carInventory;
+        this.records = records;
     }
 
-    public void run() {
+    public String call() {
+        String CustomerName;
+        String CarName;
+        String CarColor;
 
         Scanner sc = null;
         try {
@@ -30,20 +36,50 @@ public class TCPThread extends Thread {
                 String tag = st.next();
 
                 if (tag.equals("rent")) {
-                    String CustomerName = st.nextLine();
-                    String CarName = st.next();
-                    String CarColor = st.next();
+                    CustomerName = st.nextLine();
+                    CarName = st.next();
+                    CarColor = st.next();
 
                     if (carInventory.search(CarName, CarColor).equals("NotAvailable"))
                         System.out.println("Request Failed - Car not available");
                     else if (carInventory.search(CarName, CarColor).equals("NoCar"))
                         System.out.println("Request Failed - We do not have this car");
-                    else
-                        System.out.println("Request go through"); // need to assign update record information
+                    else {
+                        System.out.println("Your request has been approved " + "RecordID " + CustomerName + " " + CarName + " " + CarColor);
+                        records.add(new CarServer.RentalRecord(1, CustomerName, CarName, CarColor ));
+                    }
                 } else if (tag.equals("return")) {
-                    System.out.println("Request go through"); // need to return a record ID #
+                    int count = 0;
+                    int RecordNum = Integer.parseInt(st.next());
+                    for(CarServer.RentalRecord c : records) {
+                        if (c.recordNum == RecordNum){
+                            System.out.println(c.recordNum + " is returned’");
+                            carInventory.returnCar(c.brand, c.color);
+                            break;
+                        }
+                        count++;
+                    }
+
+                    if(count == records.size()){
+                        System.out.println(RecordNum + " not found, no such rental record");
+                    }
+
                 } else if (tag.equals("list")) {
-                    System.out.println("Request go through"); // need to return a list of car that is rented by the customer
+                    int count = 0;
+                    CustomerName = st.nextLine();
+
+                    for(CarServer.RentalRecord c : records) {
+                        if (c.name.equals(CustomerName)){
+                            System.out.println(c.recordNum + " " + c.brand + " " + c.color);
+                            break;
+                        }
+                        count++;
+                    }
+
+                    if(count == records.size()){
+                        System.out.println("No record found for" + CustomerName);
+                    }
+
                 } else if (tag.equals("inventory")) {
                     ArrayList<CarInventory.CarEntry> inventory = carInventory.getInventory();
                     for (CarInventory.CarEntry c : inventory) {
@@ -58,5 +94,7 @@ public class TCPThread extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return "Task Complete";
     }
 }

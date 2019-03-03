@@ -12,7 +12,7 @@ import java.util.Scanner;
 import java.util.concurrent.*;
 
 public class CarServer {
-    class RentalRecord {
+    static class RentalRecord {
         int recordNum;
         String name, brand, color;
         public RentalRecord(int num, String name, String bName, String cName) {
@@ -23,7 +23,7 @@ public class CarServer {
         }
     }
 
-    ArrayList<RentalRecord> records = new ArrayList<>();
+    static ArrayList<RentalRecord> records = new ArrayList<>();
 
     private static final int len = 1024;
 
@@ -61,7 +61,7 @@ public class CarServer {
             byte[] buf = new byte[len];
             while (true) {
                 while ((s = listener.accept()) != null) {
-                    threadPool.submit(new TCPThread(s, inv));
+                    threadPool.submit(new TCPThread(s, inv, records));
                 }
                 datapacket = new DatagramPacket(buf, buf.length);
                 datasocket.receive(datapacket);
