@@ -17,7 +17,7 @@ public class TCPThread extends Thread {
         this.rentalRecords = records;
     }
 
-    public String call() {
+    public void run() {
         String CustomerName;
         String CarName;
         String CarColor;
@@ -33,9 +33,9 @@ public class TCPThread extends Thread {
                 String tag = st.next();
 
                 if (tag.equals("rent")) {
-                    String CustomerName = st.next();
-                    String CarName = st.next();
-                    String CarColor = st.next();
+                    CustomerName = st.next();
+                    CarName = st.next();
+                    CarColor = st.next();
                     String searchResults = carInventory.search(CarName, CarColor);
                     if (searchResults.equals("NotAvailable")) {
                         pout.println("Request Failed - Car not available");
@@ -90,7 +90,5 @@ public class TCPThread extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return "Task Complete";
     }
 }

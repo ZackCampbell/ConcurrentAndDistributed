@@ -8,12 +8,12 @@ public class UDPThread implements Callable<String> {
 
     CarInventory carInventory;
     DatagramPacket datapacket;
-    ArrayList<CarServer.RentalRecord> records;
+    RentalRecords records;
 
-    public UDPThread(CarInventory carInventory, DatagramPacket datapacket, ArrayList<CarServer.RentalRecord> records) {
+    public UDPThread(CarInventory carInventory, DatagramPacket datapacket, RentalRecords rentalRecords) {
         this.carInventory = carInventory;
         this.datapacket = datapacket;
-        this.records = records;
+        this.records = rentalRecords;
     }
 
     public String call() {
@@ -39,40 +39,40 @@ public class UDPThread implements Callable<String> {
                 message = "Request Failed - We do not have this car";
             else {
                 message = "Your request has been approved " + "RecordID " + CustomerName + " " + CarName + " " + CarColor;
-                records.add(new CarServer.RentalRecord(1, CustomerName, CarName, CarColor));
+                //records.add(new CarServer.RentalRecord(1, CustomerName, CarName, CarColor));
             }
 
         } else if (tag.equals("return")) {
             int count = 0;
             RecordNum = Integer.parseInt(tokens[1]);
-            for (CarServer.RentalRecord c : records) {
-                if (c.recordNum == RecordNum) {
-                    message = c.recordNum + " is returned’";
-                    carInventory.returnCar(c.brand, c.color);
-                    break;
-                }
-                count++;
-            }
-
-            if (count == records.size()) {
-                message = RecordNum + " not found, no such rental record";
-            }
+//            for (RentalRecords.RentalRecord c : records) {
+//                if (c.recordNum == RecordNum) {
+//                    message = c.recordNum + " is returned’";
+//                    carInventory.returnCar(c.brand, c.color);
+//                    break;
+//                }
+//                count++;
+//            }
+//
+//            if (count == records.size()) {
+//                message = RecordNum + " not found, no such rental record";
+//            }
 
         } else if (tag.equals("list")) {
             int count = 0;
             CustomerName = tokens[1];
 
-            for (CarServer.RentalRecord c : records) {
-                if (c.name.equals(CustomerName)) {
-                    message = c.recordNum + " " + c.brand + " " + c.color;
-                    break;
-                }
-                count++;
-            }
-
-            if (count == records.size()) {
-                message = "No record found for" + CustomerName;
-            }
+//            for (CarServer.RentalRecord c : records) {
+//                if (c.name.equals(CustomerName)) {
+//                    message = c.recordNum + " " + c.brand + " " + c.color;
+//                    break;
+//                }
+//                count++;
+//            }
+//
+//            if (count == records.size()) {
+//                message = "No record found for" + CustomerName;
+//            }
 
         } else if (tag.equals(("inventory"))) {
             ArrayList<CarInventory.CarEntry> inventory = carInventory.getInventory();
@@ -83,7 +83,7 @@ public class UDPThread implements Callable<String> {
         } else if (tag.equals("exit")){
 
         }
-            return message;
+        return message;
     }
 
 

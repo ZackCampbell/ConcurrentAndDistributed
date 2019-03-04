@@ -54,7 +54,7 @@ public class CarServer {
                 }
                 datapacket = new DatagramPacket(buf, buf.length);
                 datasocket.receive(datapacket);
-                Future<String> retString = threadPool.submit(new UDPThread(inv, rentalRecords));
+                Future<String> retString = threadPool.submit(new UDPThread(inv, datapacket, rentalRecords));
                 returnpacket = new DatagramPacket(
                         retString.get().getBytes(),
                         datapacket.getLength(),
