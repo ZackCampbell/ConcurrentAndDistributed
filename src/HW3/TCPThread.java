@@ -1,60 +1,88 @@
 package HW3;
 
-import javax.naming.ldap.SortKey;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TCPThread extends Thread {
-    Socket s;
-    CarInventory carInventory;
+    private Socket clientSocket;
+    private CarInventory carInventory;
+    private RentalRecords rentalRecords;
 
-    public TCPThread(Socket s, CarInventory carInventory){
-        this.s = s;
+    public TCPThread(Socket s, CarInventory carInventory, RentalRecords records){
+        this.clientSocket = s;
         this.carInventory = carInventory;
+        this.rentalRecords = records;
     }
 
     public void run() {
 
-        Scanner sc = null;
+        Scanner sc;
         try {
-            sc = new Scanner(s.getInputStream());
-            PrintWriter pout = new PrintWriter(s.getOutputStream());
-
-            while(sc.hasNextLine()) {
+            sc = new Scanner(clientSocket.getInputStream());
+            PrintStream pout = new PrintStream(clientSocket.getOutputStream());
+            boolean running = true;
+            while (running) {
                 String command = sc.nextLine();
-                System.out.println("received:" + command);
                 Scanner st = new Scanner(command);
                 String tag = st.next();
 
                 if (tag.equals("rent")) {
-                    String CustomerName = st.nextLine();
+                    String CustomerName = st.next();
                     String CarName = st.next();
                     String CarColor = st.next();
-
-                    if (carInventory.search(CarName, CarColor).equals("NotAvailable"))
-                        System.out.println("Request Failed - Car not available");
-                    else if (carInventory.search(CarName, CarColor).equals("NoCar"))
-                        System.out.println("Request Failed - We do not have this car");
-                    else
-                        System.out.println("Request go through"); // need to assign update record information
+                    String searchResults = carInventory.search(CarName, CarColor);
+                    if (searchResults.equals("NotAvailable")) {
+                        pout.println("Request Failed - Car not available");
+                    } else if (searchResults.equals("NoCar")) {
+                        pout.println("Request Failed - We do not have this car");
+                    } else {
+                        carInventory.rentCar(CarName, CarColor);
+                        int recNumber = rentalRecords.insert(CustomerName, CarName, CarColor);
+                        pout.println("Your request has been approved, " + recNumber + " " + CustomerName
+                                + " " + CarName + " " + CarColor);
+                    }
                 } else if (tag.equals("return")) {
-                    System.out.println("Request go through"); // need to return a record ID #
+                    int recNum = st.nextInt();
+                    ArrayList<String> brandAndColor = rentalRecords.remove(recNum);
+                    if (!brandAndColor.isEmpty()) {
+                        carInventory.returnCar(brandAndColor.get(0), brandAndColor.get(1));
+                        pout.println(recNum + " is returned");
+                    } else {
+                        pout.println("NO SUCH CAR TO RETURN");
+                    }
                 } else if (tag.equals("list")) {
-                    System.out.println("Request go through"); // need to return a list of car that is rented by the customer
+                    String custName = st.next();
+                    ArrayList<String> custList = rentalRecords.getList(custName);
+                    if (custList.isEmpty())
+                        pout.println("No record found for " + custName);
+                    else
+                        for (String s : custList) {
+                            pout.println(s);
+                        }
                 } else if (tag.equals("inventory")) {
                     ArrayList<CarInventory.CarEntry> inventory = carInventory.getInventory();
+                    StringBuilder sb = new StringBuilder();
                     for (CarInventory.CarEntry c : inventory) {
-                       System.out.println(c.brand + " " + c.color + " " + c.quantity);
+                        sb.append(c.brand + " " + c.color + " " + c.quantity + "#&");
                     }
-                } else if (tag.equals("exit ")) {
-                    System.out.println("Request go through");
+                    pout.println(sb.toString());
+                } else if (tag.equals("exit")) {
+                    running = false;
+
                 }
+                if (running)
+                    pout.flush();
             }
-            pout.flush();
-            s.close();
+            clientSocket.close();
+            String currentDir = new File(".").getCanonicalPath();
+            FileWriter writer = new FileWriter(currentDir + "/src/HW3/inventory.txt", false);
+            for (CarInventory.CarEntry s : carInventory.getInventory()) {
+                String temp = s.toString() + "\n";
+                writer.append(temp);
+            }
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

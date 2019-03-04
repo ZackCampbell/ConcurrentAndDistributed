@@ -12,19 +12,6 @@ import java.util.Scanner;
 import java.util.concurrent.*;
 
 public class CarServer {
-    class RentalRecord {
-        int recordNum;
-        String name, brand, color;
-        public RentalRecord(int num, String name, String bName, String cName) {
-            this.recordNum = num;
-            this.name = name;
-            this.brand = bName;
-            this.color = cName;
-        }
-    }
-
-    ArrayList<RentalRecord> records = new ArrayList<>();
-
     private static final int len = 1024;
 
     public static void main (String[] args) {
@@ -39,6 +26,8 @@ public class CarServer {
         udpPort = 8000;
 
         CarInventory inv = new CarInventory();
+        RentalRecords rentalRecords = new RentalRecords();
+
         try {
             Scanner sc = new Scanner(new FileReader(fileName));
             while (sc.hasNextLine()) {
@@ -46,7 +35,7 @@ public class CarServer {
                 String[] tokens = entry.split(" ");
                 inv.insert(tokens[0], tokens[1], Integer.parseInt(tokens[2]));
             }
-            System.out.println(inv.getInventory());
+            //System.out.println(inv.getInventory());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -61,11 +50,11 @@ public class CarServer {
             byte[] buf = new byte[len];
             while (true) {
                 while ((s = listener.accept()) != null) {
-                    threadPool.submit(new TCPThread(s, inv));
+                    threadPool.submit(new TCPThread(s, inv, rentalRecords));
                 }
                 datapacket = new DatagramPacket(buf, buf.length);
                 datasocket.receive(datapacket);
-                Future<String> retString = threadPool.submit(new UDPThread(inv));
+                Future<String> retString = threadPool.submit(new UDPThread(inv, rentalRecords));
                 returnpacket = new DatagramPacket(
                         retString.get().getBytes(),
                         datapacket.getLength(),
@@ -73,11 +62,8 @@ public class CarServer {
                         datapacket.getPort());
                 datasocket.send(returnpacket);
             }
-
         } catch (IOException | InterruptedException | ExecutionException e) {
             System.err.println("Server aborted:" + e);
         }
-
-        // TODO: handle request from clients
     }
 }

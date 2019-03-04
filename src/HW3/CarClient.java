@@ -32,12 +32,13 @@ public class CarClient {
         try {
             Scanner sc = new Scanner(new FileReader(commandFile));
             InetAddress ia = InetAddress.getByName(hostAddress);
-            Socket clientTCPSocket = new Socket(hostAddress, tcpPort);
-            DataOutputStream tcpOutput = new DataOutputStream(clientTCPSocket.getOutputStream());
-            Scanner tcpReturn = new Scanner(clientTCPSocket.getInputStream());
+            Socket serverTCPSocket = new Socket(hostAddress, tcpPort);
+            PrintStream tcpOutput = new PrintStream(serverTCPSocket.getOutputStream());
+            Scanner tcpReturn = new Scanner(serverTCPSocket.getInputStream());
             DatagramSocket clientUDPSocket = new DatagramSocket();
             while(sc.hasNextLine()) {
                 String cmd = sc.nextLine();
+                System.out.println(cmd);
                 String[] tokens = cmd.split(" ");
                 String retString;
                 if (tokens[0].equals("setmode")) {
@@ -45,7 +46,7 @@ public class CarClient {
                     if (mode.equals("U")) {
                         tcpOutput.close();
                         tcpReturn.close();
-                        clientTCPSocket.close();
+                        serverTCPSocket.close();
                     }
                 } else if (tokens[0].equals("rent")) {
                     if (mode.equals("T")) {
@@ -53,7 +54,6 @@ public class CarClient {
                     } else {
                         retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
                     }
-                    System.out.println(retString);
                     retStringList.add(retString);
                 } else if (tokens[0].equals("return")) {
                     if (mode.equals("T")) {
@@ -61,7 +61,6 @@ public class CarClient {
                     } else {
                         retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
                     }
-                    System.out.println(retString);
                     retStringList.add(retString);
                 } else if (tokens[0].equals("inventory")) {
                     if (mode.equals("T")) {
@@ -69,7 +68,7 @@ public class CarClient {
                     } else {
                         retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
                     }
-                    System.out.println(retString);
+                    retString = retString.replaceAll("#&", "\n");
                     retStringList.add(retString);
                 } else if (tokens[0].equals("list")) {
                     if (mode.equals("T")) {
@@ -77,19 +76,19 @@ public class CarClient {
                     } else {
                         retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
                     }
-                    System.out.println(retString);
                     retStringList.add(retString);
                 } else if (tokens[0].equals("exit")) {
                     if (mode.equals("T")) {
-                        retString = sr_TCP(tcpOutput, tcpReturn, cmd);
+                        tcpOutput.println(cmd);
+                        tcpOutput.flush();
                         tcpOutput.close();
                         tcpReturn.close();
-                        clientTCPSocket.close();
+                        serverTCPSocket.close();
                     } else {
-                        retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
+                        //retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
                     }
-                    System.out.println(retString);
-                    retStringList.add(retString);
+                    //System.out.println(retString);
+                    //retStringList.add(retString);
                     break;
                 } else {
                     System.out.println("ERROR: No such command");
@@ -99,6 +98,7 @@ public class CarClient {
             e.printStackTrace();
         }
 
+        //  Output to out_(id) file
         try {
             String currentDir = new File(".").getCanonicalPath();
             File outputFile = new File(currentDir + "/out_" + clientId + ".txt");
@@ -130,9 +130,9 @@ public class CarClient {
         return retString;
     }
 
-    private static String sr_TCP(DataOutputStream tcpOutput, Scanner tcpReturn, String cmd) throws IOException {
+    private static String sr_TCP(PrintStream tcpOutput, Scanner tcpReturn, String cmd) throws IOException {
         String retString;
-        tcpOutput.writeUTF(cmd);
+        tcpOutput.println(cmd);
         tcpOutput.flush();
         retString = tcpReturn.nextLine();
         return retString;
