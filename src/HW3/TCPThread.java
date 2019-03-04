@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.Callable;
 
 public class TCPThread extends Thread {
     private Socket clientSocket;
@@ -16,7 +17,10 @@ public class TCPThread extends Thread {
         this.rentalRecords = records;
     }
 
-    public void run() {
+    public String call() {
+        String CustomerName;
+        String CarName;
+        String CarColor;
 
         Scanner sc;
         try {
@@ -86,5 +90,7 @@ public class TCPThread extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return "Task Complete";
     }
 }
