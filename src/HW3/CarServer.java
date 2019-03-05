@@ -45,10 +45,7 @@ public class CarServer {
 
         try {
             ServerSocket listener = new ServerSocket(tcpPort);
-
             DatagramSocket datasocket = new DatagramSocket(udpPort);
-
-
 
             Thread tcpThread = new Thread(() -> {
                 while (true) {

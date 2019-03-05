@@ -25,7 +25,6 @@ public class UDPThread implements Callable<String> {
         String carName;
         String carColor;
         String command = new String(datapacket.getData(), 0, datapacket.getLength());
-        System.out.println("Received command: " + command);
         String[] tokens = command.split(" ");
         String tag = tokens[0];
 
@@ -99,7 +98,6 @@ public class UDPThread implements Callable<String> {
             }
             message = "Exiting";
         }
-        System.out.println("Returning with message: " + message);
         return message;
     }
 
