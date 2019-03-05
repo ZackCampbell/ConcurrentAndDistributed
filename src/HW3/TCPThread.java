@@ -61,20 +61,30 @@ public class TCPThread extends Thread {
                     ArrayList<String> custList = rentalRecords.getList(custName);
                     if (custList.isEmpty())
                         pout.println("No record found for " + custName);
-                    else
-                        for (String s : custList) {
-                            pout.println(s);
+                    else {
+                        StringBuilder sb = new StringBuilder();
+                        for (int i = 0; i < custList.size(); i++) {
+                            if (i == custList.size() - 1) {
+                                sb.append(custList.get(i));
+                            } else {
+                                sb.append(custList.get(i) + "#&");
+                            }
                         }
+                        pout.println(sb.toString());
+                    }
                 } else if (tag.equals("inventory")) {
                     ArrayList<CarInventory.CarEntry> inventory = carInventory.getInventory();
                     StringBuilder sb = new StringBuilder();
-                    for (CarInventory.CarEntry c : inventory) {
-                        sb.append(c.brand + " " + c.color + " " + c.quantity + "#&");
+                    for (int i = 0; i < inventory.size(); i++) {
+                        if (i == inventory.size() - 1) {
+                            sb.append(inventory.get(i).brand + " " + inventory.get(i).color + " " + inventory.get(i).quantity);
+                        } else {
+                            sb.append(inventory.get(i).brand + " " + inventory.get(i).color + " " + inventory.get(i).quantity + "#&");
+                        }
                     }
                     pout.println(sb.toString());
                 } else if (tag.equals("exit")) {
                     running = false;
-
                 }
                 if (running)
                     pout.flush();
@@ -82,8 +92,13 @@ public class TCPThread extends Thread {
             clientSocket.close();
             String currentDir = new File(".").getCanonicalPath();
             FileWriter writer = new FileWriter(currentDir + "/src/HW3/inventory.txt", false);
-            for (CarInventory.CarEntry s : carInventory.getInventory()) {
-                String temp = s.toString() + "\n";
+            for (int i = 0; i < carInventory.getInventory().size(); i++) {
+                String temp;
+                if (i == carInventory.getInventory().size() - 1) {
+                    temp = carInventory.getInventory().get(i).toString();
+                } else {
+                    temp = carInventory.getInventory().get(i).toString() + "\n";
+                }
                 writer.append(temp);
             }
             writer.close();

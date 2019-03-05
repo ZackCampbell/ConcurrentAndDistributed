@@ -1,9 +1,12 @@
-setmode T
+setmode U
 rent Mike “Ford” “black”
 rent Jack “Toyota” “blue”
 rent Lucy “Toyota” “blue”
+rent Jack “Lexus” “black”
 list Jack
 list Lucy
 return 1
+return 2
+inventory
 inventory
 exit

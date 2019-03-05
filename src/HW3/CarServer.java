@@ -7,13 +7,13 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.*;
 
 public class CarServer {
-    private static final int len = 1024;
-
+    private static final int len = 4096;
+    private static DatagramPacket datapacket, returnpacket;
+    private static Socket s;
     public static void main (String[] args) {
         int tcpPort;
         int udpPort;
@@ -40,29 +40,51 @@ public class CarServer {
             e.printStackTrace();
         }
 
-        ExecutorService threadPool = Executors.newCachedThreadPool();
+        ExecutorService tcpThreadPool = Executors.newCachedThreadPool();
+        ExecutorService udpThreadPool = Executors.newCachedThreadPool();
 
         try {
             ServerSocket listener = new ServerSocket(tcpPort);
-            Socket s;
+
             DatagramSocket datasocket = new DatagramSocket(udpPort);
-            DatagramPacket datapacket, returnpacket;
-            byte[] buf = new byte[len];
-            while (true) {
-                while ((s = listener.accept()) != null) {
-                    threadPool.submit(new TCPThread(s, inv, rentalRecords));
+
+
+
+            Thread tcpThread = new Thread(() -> {
+                while (true) {
+                    try {
+                        while ((s = listener.accept()) != null) {
+                            tcpThreadPool.submit(new TCPThread(s, inv, rentalRecords));
+                        }
+                    }catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-                datapacket = new DatagramPacket(buf, buf.length);
-                datasocket.receive(datapacket);
-                Future<String> retString = threadPool.submit(new UDPThread(inv, datapacket, rentalRecords));
-                returnpacket = new DatagramPacket(
-                        retString.get().getBytes(),
-                        datapacket.getLength(),
-                        datapacket.getAddress(),
-                        datapacket.getPort());
-                datasocket.send(returnpacket);
-            }
-        } catch (IOException | InterruptedException | ExecutionException e) {
+            });
+
+            Thread udpThread = new Thread(() -> {
+                while (true) {
+                    try {
+                        byte[] buf = new byte[len];
+                        datapacket = new DatagramPacket(buf, buf.length);
+                        datasocket.receive(datapacket);
+                        Future<String> retString = udpThreadPool.submit(new UDPThread(inv, datapacket, rentalRecords));
+                        returnpacket = new DatagramPacket(
+                                retString.get().getBytes(),
+                                retString.get().getBytes().length,
+                                datapacket.getAddress(),
+                                datapacket.getPort());
+                        datasocket.send(returnpacket);
+                    } catch (IOException | InterruptedException | ExecutionException e) {
+                        System.err.println("Server aborted:" + e);
+                    }
+
+                }
+            });
+
+            tcpThread.start();
+            udpThread.start();
+        } catch (IOException e) {
             System.err.println("Server aborted:" + e);
         }
     }

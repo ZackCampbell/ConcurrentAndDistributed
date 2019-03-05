@@ -12,7 +12,7 @@ public class CarClient {
         int udpPort;
         int clientId;
 
-        int len = 1024;
+        int len = 4096;
 
         if (args.length != 2) {
             System.out.println("ERROR: Provide 2 arguments: commandFile, clientId");
@@ -38,7 +38,7 @@ public class CarClient {
             DatagramSocket clientUDPSocket = new DatagramSocket();
             while(sc.hasNextLine()) {
                 String cmd = sc.nextLine();
-                System.out.println(cmd);
+//                System.out.println(cmd);
                 String[] tokens = cmd.split(" ");
                 String retString;
                 if (tokens[0].equals("setmode")) {
@@ -65,14 +65,15 @@ public class CarClient {
                 } else if (tokens[0].equals("inventory")) {
                     if (mode.equals("T")) {
                         retString = sr_TCP(tcpOutput, tcpReturn, cmd);
+                        retString = retString.replaceAll("#&", "\n");
                     } else {
                         retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
                     }
-                    retString = retString.replaceAll("#&", "\n");
                     retStringList.add(retString);
                 } else if (tokens[0].equals("list")) {
                     if (mode.equals("T")) {
                         retString = sr_TCP(tcpOutput, tcpReturn, cmd);
+                        retString = retString.replaceAll("#&", "\n");
                     } else {
                         retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
                     }
@@ -85,10 +86,12 @@ public class CarClient {
                         tcpReturn.close();
                         serverTCPSocket.close();
                     } else {
-                        //retString = sr_UDP(udpPort, len, ia, clientUDPSocket, cmd);
+                        byte[] sBuffer;
+                        DatagramPacket sPacket;
+                        sBuffer = cmd.getBytes();
+                        sPacket = new DatagramPacket(sBuffer, sBuffer.length, ia, udpPort);
+                        clientUDPSocket.send(sPacket);
                     }
-                    //System.out.println(retString);
-                    //retStringList.add(retString);
                     break;
                 } else {
                     System.out.println("ERROR: No such command");
@@ -103,8 +106,13 @@ public class CarClient {
             String currentDir = new File(".").getCanonicalPath();
             File outputFile = new File(currentDir + "/out_" + clientId + ".txt");
             FileWriter writer = new FileWriter(outputFile);
-            for (String s : retStringList) {
-                String temp = s + "\n";
+            for (int i = 0; i < retStringList.size(); i++) {
+                String temp;
+                if (i == retStringList.size() - 1) {
+                    temp = retStringList.get(i);
+                } else {
+                    temp = retStringList.get(i) + "\n";
+                }
                 writer.append(temp);
             }
             writer.close();
@@ -115,26 +123,19 @@ public class CarClient {
     }
 
     private static String sr_UDP(int udpPort, int len, InetAddress ia, DatagramSocket clientUDPSocket, String cmd) throws IOException {
-        byte[] sBuffer;
-        DatagramPacket sPacket;
-        byte[] rBuffer;
-        DatagramPacket rPacket;
-        String retString;
-        sBuffer = cmd.getBytes();
+        byte[] sBuffer = cmd.getBytes();
+        DatagramPacket sPacket, rPacket;
         sPacket = new DatagramPacket(sBuffer, sBuffer.length, ia, udpPort);
         clientUDPSocket.send(sPacket);
-        rBuffer = new byte[len];
-        rPacket = new DatagramPacket(rBuffer, rBuffer.length);
+        byte[] rBuffer = new byte[len];
+        rPacket = new DatagramPacket(rBuffer, len);
         clientUDPSocket.receive(rPacket);
-        retString = new String(rPacket.getData(), 0, rPacket.getLength());
-        return retString;
+        return new String(rPacket.getData(), 0, rPacket.getLength());
     }
 
     private static String sr_TCP(PrintStream tcpOutput, Scanner tcpReturn, String cmd) throws IOException {
-        String retString;
         tcpOutput.println(cmd);
         tcpOutput.flush();
-        retString = tcpReturn.nextLine();
-        return retString;
+        return tcpReturn.nextLine();
     }
 }

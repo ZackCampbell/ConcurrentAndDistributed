@@ -15,11 +15,11 @@ public class RentalRecords {
         }
     }
     private int recNumber = 0;
-    private HashMap<String, ArrayList<RentalRecord>> recordMap;
+//    private HashMap<String, ArrayList<RentalRecord>> recordMap;
     private ArrayList<RentalRecord> records;
 
     public RentalRecords() {
-
+//        recordMap = new HashMap<>();
         records = new ArrayList<>();
     }
 
