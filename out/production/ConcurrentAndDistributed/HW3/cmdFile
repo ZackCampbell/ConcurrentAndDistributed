@@ -1,8 +1,12 @@
-setmode T
-rent Mike "Ford" "Blue"
-rent Jack "Lexus" "Black"
-rent Lucy "Tesla" "Silver"
+setmode U
+rent Mike “Ford” “black”
+rent Jack “Toyota” “blue”
+rent Lucy “Toyota” “blue”
+rent Jack “Lexus” “black”
+list Jack
 list Lucy
 return 1
+return 2
+inventory
 inventory
 exit
