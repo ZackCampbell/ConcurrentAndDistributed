@@ -10,9 +10,10 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
-import java.io.*;
 
 // Do not change the signature of this class
 public class TextAnalyzer extends Configured implements Tool {
@@ -26,10 +27,11 @@ public class TextAnalyzer extends Configured implements Tool {
             throws IOException, InterruptedException
         {
             String line = value.toString();
+	    line = line.toLowerCase();
             line = line.replaceAll("[^a-zA-Z0-9]", " ");
             line = line.trim().replaceAll(" +", " ");
             StringTokenizer tokenizer = new StringTokenizer(line, " ");
-            ArrayList<Text> words = new ArrayList<Text>();
+            ArrayList<Text> words = new ArrayList<>();
             while (tokenizer.hasMoreTokens()) {
                 Text word = new Text(tokenizer.nextToken());
                 if (!words.contains(word)) {
@@ -59,7 +61,7 @@ public class TextAnalyzer extends Configured implements Tool {
 
     // Replace "?" with your own input key / value types, i.e., the output
     // key / value types of your mapper function
-    public static class TextReducer extends Reducer<Text, IntWritable, Text, Text> {
+    public static class TextReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
         private final static Text emptyText = new Text("");
 
         public void reduce(Text key, Iterable<IntWritable> queryInts, Context context)
@@ -71,7 +73,7 @@ public class TextAnalyzer extends Configured implements Tool {
                 sum += value.get();
             }
             IntWritable result = new IntWritable(sum);
-            context.write(key, new Text(result.toString()));
+            context.write(key, result);
 
 
             // Write out the results; you may change the following example
@@ -99,13 +101,13 @@ public class TextAnalyzer extends Configured implements Tool {
         job.setMapperClass(TextMapper.class);
 
 	// set local combiner class
-        job.setCombinerClass(TextCombiner.class);
+        job.setCombinerClass(TextReducer.class);
 	// set reducer class
 	job.setReducerClass(TextReducer.class);
 
         // Specify key / value types (Don't change them for the purpose of this assignment)
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(Text.class);
+        job.setOutputValueClass(IntWritable.class);
         //   If your mapper and combiner's  output types are different from Text.class,
         //   then uncomment the following lines to specify the data types.
         //job.setMapOutputKeyClass(?.class);
