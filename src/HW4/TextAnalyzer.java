@@ -10,24 +10,47 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+import java.io.*;
+
 // Do not change the signature of this class
 public class TextAnalyzer extends Configured implements Tool {
 
     // Replace "?" with your own output key / value types
     // The four template data types are:
     //     <Input Key Type, Input Value Type, Output Key Type, Output Value Type>
-    public static class TextMapper extends Mapper<LongWritable, Text, ?, ?> {
+    public static class TextMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+        private final static IntWritable one = new IntWritable(1);
         public void map(LongWritable key, Text value, Context context)
             throws IOException, InterruptedException
         {
+            String line = value.toString();
+            line = line.replaceAll("[^a-zA-Z0-9]", " ");
+            line = line.trim().replaceAll(" +", " ");
+            StringTokenizer tokenizer = new StringTokenizer(line, " ");
+            ArrayList<Text> words = new ArrayList<Text>();
+            while (tokenizer.hasMoreTokens()) {
+                Text word = new Text(tokenizer.nextToken());
+                if (!words.contains(word)) {
+                    words.add(word);
+                }
+            }
+            for (int i = 0; i < words.size(); i++) {
+                for (int j = 0; j < words.size(); j++) {
+                    if (i != j) {
+                        context.write(new Text(words.get(i) + " " + words.get(j)), one);
+                    }
+                }
+            }
             // Implementation of you mapper function
         }
     }
 
     // Replace "?" with your own key / value types
     // NOTE: combiner's output key / value types have to be the same as those of mapper
-    public static class TextCombiner extends Reducer<?, ?, ?, ?> {
-        public void reduce(Text key, Iterable<Tuple> tuples, Context context)
+    public static class TextCombiner extends Reducer<Text, IntWritable, Text, IntWritable> {
+        public void reduce(Text key, Iterable<IntWritable> tuples, Context context)
             throws IOException, InterruptedException
         {
             // Implementation of you combiner function
@@ -36,25 +59,32 @@ public class TextAnalyzer extends Configured implements Tool {
 
     // Replace "?" with your own input key / value types, i.e., the output
     // key / value types of your mapper function
-    public static class TextReducer extends Reducer<?, ?, Text, Text> {
+    public static class TextReducer extends Reducer<Text, IntWritable, Text, Text> {
         private final static Text emptyText = new Text("");
 
-        public void reduce(Text key, Iterable<Tuple> queryTuples, Context context)
+        public void reduce(Text key, Iterable<IntWritable> queryInts, Context context)
             throws IOException, InterruptedException
         {
             // Implementation of you reducer function
+            int sum = 0;
+            for (IntWritable value : queryInts) {
+                sum += value.get();
+            }
+            IntWritable result = new IntWritable(sum);
+            context.write(key, new Text(result.toString()));
+
 
             // Write out the results; you may change the following example
             // code to fit with your reducer function.
             //   Write out each edge and its weight
-	    Text value = new Text();
-            for(String neighbor: map.keySet()){
-                String weight = map.get(neighbor).toString();
-                value.set(" " + neighbor + " " + weight);
-                context.write(key, value);
-            }
-            //   Empty line for ending the current context key
-            context.write(emptyText, emptyText);
+//	    Text value = new Text();
+//            for(String neighbor: map.keySet()){
+//                String weight = map.get(neighbor).toString();
+//                value.set(" " + neighbor + " " + weight);
+//                context.write(key, value);
+//            }
+//            //   Empty line for ending the current context key
+//            context.write(emptyText, emptyText);
         }
     }
 
@@ -62,15 +92,15 @@ public class TextAnalyzer extends Configured implements Tool {
         Configuration conf = this.getConf();
 
         // Create job
-        Job job = new Job(conf, "EID1_EID2"); // Replace with your EIDs
+        Job job = new Job(conf, "zcc254_ka25635"); // Replace with your EIDs
         job.setJarByClass(TextAnalyzer.class);
 
         // Setup MapReduce job
         job.setMapperClass(TextMapper.class);
-        
+
 	// set local combiner class
         job.setCombinerClass(TextCombiner.class);
-	// set reducer class        
+	// set reducer class
 	job.setReducerClass(TextReducer.class);
 
         // Specify key / value types (Don't change them for the purpose of this assignment)

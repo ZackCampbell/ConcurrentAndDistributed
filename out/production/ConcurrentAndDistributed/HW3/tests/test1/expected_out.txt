@@ -1,0 +1,9 @@
+.*1.*Mike.*Toyota.*Blue.*
+.*Failed.*
+.*2.*Lucy.*Tesla.*Silver.*
+.*1.*Toyota.*Blue.*
+.*1.*returned.*
+.*Toyota.*Blue.*1.*
+.*Ford.*Green.*15.*
+.*Tesla.*Silver.*9.*
+.*Lexus.*White.*17.*

@@ -1,0 +1,4 @@
+"car1" "color1" 5
+"car2" "color2" 6
+"car3" "color3" 10
+"car4" "color4" 4

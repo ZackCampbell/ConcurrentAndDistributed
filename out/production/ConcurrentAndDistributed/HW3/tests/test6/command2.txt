@@ -1,0 +1,4 @@
+rent aaa "Ford" "Black"
+rent bbb "Tesla" "White"
+rent ccc "Tesla" "White"
+exit

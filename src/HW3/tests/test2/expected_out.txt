@@ -1,0 +1,12 @@
+.*1.*A.*car1.*color1.*
+.*2.*B.*car2.*color2.*
+.*3.*B.*car1.*color1.*
+.*4.*B.*car4.*color4.*
+.*5.*A.*car3.*color3.*
+.*6.*C.*car4.*color4.*
+.*7.*D.*car4.*color4.*
+.*8.*E.*car4.*color4.*
+.*Failed.*
+.*9.*F.*car3.*color3.*
+.*4.*returned.*
+.*10.*F.*car4.*color4.*

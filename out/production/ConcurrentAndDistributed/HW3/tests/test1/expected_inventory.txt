@@ -1,0 +1,4 @@
+.*Toyota.*Blue.*1.*
+.*Ford.*Green.*15.*
+.*Tesla.*Silver.*9.*
+.*Lexus.*White.*17.*

@@ -1,0 +1,5 @@
+setmode T
+rent Mike "Ford" "Black"
+rent Jack "Lexus" "Red"
+rent Lucy "Tesla" "White"
+exit

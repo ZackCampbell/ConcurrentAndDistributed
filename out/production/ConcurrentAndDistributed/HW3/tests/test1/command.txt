@@ -1,0 +1,8 @@
+setmode T
+rent Mike "Toyota" "Blue"
+rent Jack "Toyota" "Blue"
+rent Lucy "Tesla" "Silver"
+list Mike
+return 1
+inventory
+exit

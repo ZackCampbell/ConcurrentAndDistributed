@@ -1,0 +1,4 @@
+"Ford" "Black" 1
+"Toyota" "Yellow" 15
+"Tesla" "White" 10
+"Lexus" "Red" 17

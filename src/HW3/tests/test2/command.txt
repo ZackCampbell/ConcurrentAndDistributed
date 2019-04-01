@@ -1,0 +1,14 @@
+rent A "car1" "color1"
+rent B "car2" "color2"
+rent B "car1" "color1"
+rent B "car4" "color4"
+rent A "car3" "color3"
+rent C "car4" "color4"
+rent D "car4" "color4" 
+rent E "car4" "color4"
+rent F "car4" "color4" 
+rent F "car3" "color3"
+return 4 
+rent F "car4" "color4" 
+exit
+

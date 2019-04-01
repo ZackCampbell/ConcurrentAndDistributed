@@ -1,0 +1,13 @@
+setmode T
+rent a "car1" "color1"
+rent a "car2" "color2"
+rent a "car3" "color3"
+setmode U
+rent b "car1" "color1"
+return 2
+list a
+inventory
+rent c "car1" "color1"
+rent d "car1" "color1"
+return 2
+exit

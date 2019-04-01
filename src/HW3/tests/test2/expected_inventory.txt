@@ -1,0 +1,4 @@
+.*car1.*color1.*3.*
+.*car2.*color2.*5.*
+.*car3.*color3.*8.*
+.*car4.*color4.*0.*

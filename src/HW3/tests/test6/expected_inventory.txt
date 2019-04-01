@@ -1,0 +1,4 @@
+.*Ford.*Black.*0.*
+.*Toyota.*Yellow.*15.*
+.*Tesla.*White.*7.*
+.*Lexus.*Red.*16.*

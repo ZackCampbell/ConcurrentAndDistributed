@@ -1,0 +1,10 @@
+.*1.*a.*car1.*color1.*
+.*2.*a.*car2.*color2.*
+.*3.*a.*car3.*color3.*
+.*4.*b.*car1.*color1.*
+.*2.*returned.*
+.*1.*car1.*color1.*
+.*3.*car3.*color3.*
+.*6.*not.*found.*
+.*5.*c.*car1.*color1.*
+.*Failed.*
