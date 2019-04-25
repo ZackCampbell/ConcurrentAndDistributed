@@ -1,9 +1,10 @@
 package HW5.paxos;
-import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -23,9 +24,12 @@ public class Paxos implements PaxosRMI, Runnable{
     AtomicBoolean dead;// for testing
     AtomicBoolean unreliable;// for testing
 
-
+    Map<Integer, Storage> storageMap;
     Storage storage;
+    int seq = -1;
     int n = -1;
+    int totalPeers;
+    int[] doneList;
 
     // Your data here
 
@@ -45,7 +49,15 @@ public class Paxos implements PaxosRMI, Runnable{
         this.unreliable = new AtomicBoolean(false);
 
         // Your initialization code here
+        this.storageMap = new ConcurrentHashMap<Integer, Storage>();
+        //this.valueMap = new ConcurrentHashMap<Integer, Object>();
         this.storage = new Storage();
+        this.totalPeers = peers.length;
+        this.doneList = new int[peers.length];
+        for(int i = 0; i < peers.length; i++){
+            doneList[i] = -1;
+        }
+
 
         // register peers, do not modify this part
         try{
@@ -113,7 +125,9 @@ public class Paxos implements PaxosRMI, Runnable{
      */
     public void Start(int seq, Object value){
         if (seq >= Min() && this.storage.getCurrentState() != State.Decided) {
+            this.seq = seq;
             storage.setAcceptedValue(value);
+            storageMap.put(seq, storage);
             Thread newInstance = new Thread(this);
             newInstance.start();
         }
@@ -121,7 +135,8 @@ public class Paxos implements PaxosRMI, Runnable{
 
     @Override
     public void run(){
-        while (this.Status(this.me).state != State.Decided) {
+
+        while (this.Status(this.seq).state != State.Decided) {
             int toPropose = this.Min();
             ArrayList<Response> prepResponseList = new ArrayList<>();
             ArrayList<Response> accResponseList = new ArrayList<>();
@@ -163,10 +178,12 @@ public class Paxos implements PaxosRMI, Runnable{
                 }
             }
         }
-    }
+        }
+
 
     // RMI handler
     public Response Prepare(Request req){
+
         if (req.getN() >= storage.getHighestPromise()) {
             storage.setHighestPromise(req.getN());
             return new Response(req.getN(), storage.getHighestAccept(), this.storage.getAcceptedValue());
@@ -201,6 +218,7 @@ public class Paxos implements PaxosRMI, Runnable{
      * see the comments for Min() for more explanation.
      */
     public void Done(int seq) {
+        this.doneList[this.me] = seq;
         // Your code here
     }
 
@@ -211,8 +229,15 @@ public class Paxos implements PaxosRMI, Runnable{
      * this peer.
      */
     public int Max(){
-        return 0;
         // Your code here
+        int max = -1;
+        for(int n : storageMap.keySet()) {
+            if (n > max) {
+                max = n;
+            }
+        }
+        return max;
+
     }
 
     /**
@@ -245,10 +270,21 @@ public class Paxos implements PaxosRMI, Runnable{
      */
     public int Min() {
         // Your code here
-
+        int min = Integer.MAX_VALUE;
+        for(int n : doneList){
+            if(n < min)
+                min = n;
+        }
+        return (min+1);
     }
 
-
+    public void forgot(){
+        int min = Min();
+        for(int n : storageMap.keySet()){
+            if(n < min)
+                storageMap.remove(n);
+        }
+    }
 
     /**
      * the application wants to know whether this
