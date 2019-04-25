@@ -11,6 +11,17 @@ public class Request implements Serializable {
     static final long serialVersionUID=1L;
     // Your data here
 
+    public Request(int toPropose) {
+
+    }
+
+    public Request(int toPropose, Object value) {
+
+    }
+
+    public Request(Object value) {
+
+    }
 
     // Your constructor and methods here
 }

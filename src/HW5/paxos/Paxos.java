@@ -1,7 +1,9 @@
 package HW5.paxos;
+import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.registry.Registry;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -21,6 +23,10 @@ public class Paxos implements PaxosRMI, Runnable{
     AtomicBoolean dead;// for testing
     AtomicBoolean unreliable;// for testing
 
+
+    Storage storage;
+    int n = -1;
+
     // Your data here
 
 
@@ -39,7 +45,7 @@ public class Paxos implements PaxosRMI, Runnable{
         this.unreliable = new AtomicBoolean(false);
 
         // Your initialization code here
-
+        this.storage = new Storage();
 
         // register peers, do not modify this part
         try{
@@ -106,26 +112,84 @@ public class Paxos implements PaxosRMI, Runnable{
      * is reached.
      */
     public void Start(int seq, Object value){
-        // Your code here
+        if (seq >= Min() && this.storage.getCurrentState() != State.Decided) {
+            storage.setAcceptedValue(value);
+            Thread newInstance = new Thread(this);
+            newInstance.start();
+        }
     }
 
     @Override
     public void run(){
-        //Your code here
+        while (this.Status(this.me).state != State.Decided) {
+            int toPropose = this.Min();
+            ArrayList<Response> prepResponseList = new ArrayList<>();
+            ArrayList<Response> accResponseList = new ArrayList<>();
+            for (int id : this.ports) {                               // Send "Prepare" request to all peers
+                Response prepResponse = this.Call("Prepare", new Request(toPropose), id);
+                prepResponseList.add(prepResponse);
+            }
+            int prepCounter = 0;
+            int currHighestProposal = -1;
+            Object highestValue = null;
+            for (Response r : prepResponseList) {
+                if (r != null) {
+                    prepCounter++;
+                    if (r.getN() > currHighestProposal) {
+                        currHighestProposal = r.getN();
+                        highestValue = r.getV();
+                    }
+                }
+            }
+            if (prepCounter > prepResponseList.size()) {
+                prepResponseList.clear();
+                if (storage.getHighestAccept() <= currHighestProposal) {
+                    storage.setAcceptedValue(highestValue);
+                }
+                int accCounter = 0;
+                for (int id : this.ports) {                           // Send "Accept" request to all peers
+                    Response accResponse = this.Call("Accept", new Request(toPropose, storage.getAcceptedValue()), id);
+                    accResponseList.add(accResponse);
+                }
+                for (Response r : accResponseList) {
+                    if (r != null) {
+                        accCounter++;
+                    }
+                }
+                if (accCounter > accResponseList.size()) {
+                    for (int id : this.ports) {
+                        Response decResponse = this.Call("Decide", new Request(storage.getAcceptedValue()), id);
+                    }
+                }
+            }
+        }
     }
 
     // RMI handler
     public Response Prepare(Request req){
-        // your code here
-
+        if (req.getN() >= storage.getHighestPromise()) {
+            storage.setHighestPromise(req.getN());
+            return new Response(req.getN(), storage.getHighestAccept(), this.storage.getAcceptedValue());
+        } else {
+            return new Response();
+        }
     }
 
     public Response Accept(Request req){
-        // your code here
-
+        if (req.getN() >= storage.getHighestPromise()) {
+            storage.setHighestPromise(req.getN());
+            storage.setHighestAccept(req.getN());
+            storage.setAcceptedValue(req.getV());
+            return new Response(req.getN());
+        } else {
+            return new Response();
+        }
     }
 
     public Response Decide(Request req){
+        this.storage.setCurrentState(State.Decided);
+        this.storage.setAcceptedValue(req.getV());
+        return new Response(req.getV());
         // your code here
 
     }
@@ -147,6 +211,7 @@ public class Paxos implements PaxosRMI, Runnable{
      * this peer.
      */
     public int Max(){
+        return 0;
         // Your code here
     }
 
@@ -178,7 +243,7 @@ public class Paxos implements PaxosRMI, Runnable{
      * missed -- the other peers therefore cannot forget these
      * instances.
      */
-    public int Min(){
+    public int Min() {
         // Your code here
 
     }
@@ -193,6 +258,7 @@ public class Paxos implements PaxosRMI, Runnable{
      * it should not contact other Paxos peers.
      */
     public retStatus Status(int seq){
+        return new retStatus(this.storage.currentState, this.storage.acceptedValue);
         // Your code here
 
     }
@@ -238,5 +304,58 @@ public class Paxos implements PaxosRMI, Runnable{
         return this.unreliable.get();
     }
 
+
+    class Storage {
+        int highestPromise = -1;        // n_p
+        int highestAccept = -1;         // n_a
+        //int highestProposal = -1;
+        State currentState;
+        Object acceptedValue = null;    // v and v_a
+
+        public Storage() {
+            this.currentState = State.Pending;
+        }
+
+        public State getCurrentState() {
+            return this.currentState;
+        }
+
+        public void setCurrentState(State currentState) {
+            this.currentState = currentState;
+        }
+
+//        public Object getHighestProposal() {
+//            return this.highestProposal;
+//        }
+
+        public int getHighestAccept() {
+            return this.highestAccept;
+        }
+
+        public int getHighestPromise() {
+            return this.highestPromise;
+        }
+
+        public Object getAcceptedValue() {
+            return this.acceptedValue;
+        }
+
+        public void setAcceptedValue(Object v) {
+            this.acceptedValue = v;
+        }
+
+        public void setHighestPromise(int n) {
+            this.highestPromise = n;
+        }
+
+        public void setHighestAccept(int n) {
+            this.highestAccept = n;
+        }
+
+//        public void setHighestProposal(int v) {
+//            this.highestProposal = v;
+//        }
+
+    }
 
 }
