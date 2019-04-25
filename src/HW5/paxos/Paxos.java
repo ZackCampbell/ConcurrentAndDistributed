@@ -25,7 +25,6 @@ public class Paxos implements PaxosRMI, Runnable{
 
 
     Storage storage;
-    int n = -1;
 
     // Your data here
 
@@ -121,7 +120,7 @@ public class Paxos implements PaxosRMI, Runnable{
 
     @Override
     public void run(){
-        while (this.Status(this.me).state != State.Decided) {
+        while (this.Status(this.me).state != State.Decided && !this.isDead()) {
             int toPropose = this.Min();
             ArrayList<Response> prepResponseList = new ArrayList<>();
             ArrayList<Response> accResponseList = new ArrayList<>();

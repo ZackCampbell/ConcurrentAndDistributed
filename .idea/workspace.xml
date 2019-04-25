@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="086dc031-0932-4f32-a620-77ba2287a5b2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HW5/paxos/Paxos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW5/paxos/Paxos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HW5/paxos/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW5/paxos/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HW5/paxos/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW5/paxos/Response.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HW5/paxos/Paxos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="316" column="9" lean-forward="true" selection-start-line="316" selection-start-column="9" selection-end-line="316" selection-end-column="9" />
+            <state relative-caret-position="425">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Status#0;class#Paxos#0" />
@@ -45,8 +42,7 @@
                 <element signature="e#9638#9639#0" expanded="true" />
                 <element signature="e#9674#9675#0" expanded="true" />
                 <element signature="e#9718#9719#0" expanded="true" />
-                <element signature="e#7790#7791#0" expanded="true" />
-                <element signature="e#7846#7847#0" expanded="true" />
+                <element signature="class#Storage#0;class#Paxos#0" />
                 <element signature="e#7806#7807#0" expanded="true" />
                 <element signature="e#7850#7851#0" expanded="true" />
                 <element signature="e#7807#7808#0" expanded="true" />
@@ -255,7 +251,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556158036970" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556199830971" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -330,7 +326,7 @@
       <workItem from="1554045831520" duration="12103000" />
       <workItem from="1554236570661" duration="2000000" />
       <workItem from="1554993718075" duration="2108000" />
-      <workItem from="1556136930715" duration="12898000" />
+      <workItem from="1556136930715" duration="14489000" />
     </task>
     <servers />
   </component>
@@ -367,7 +363,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="139217000" />
+    <option name="totallyTimeSpent" value="140808000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -771,8 +767,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HW5/paxos/Paxos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="316" column="9" lean-forward="true" selection-start-line="316" selection-start-column="9" selection-end-line="316" selection-end-column="9" />
+        <state relative-caret-position="425">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Status#0;class#Paxos#0" />
@@ -784,8 +780,7 @@
             <element signature="e#9638#9639#0" expanded="true" />
             <element signature="e#9674#9675#0" expanded="true" />
             <element signature="e#9718#9719#0" expanded="true" />
-            <element signature="e#7790#7791#0" expanded="true" />
-            <element signature="e#7846#7847#0" expanded="true" />
+            <element signature="class#Storage#0;class#Paxos#0" />
             <element signature="e#7806#7807#0" expanded="true" />
             <element signature="e#7850#7851#0" expanded="true" />
             <element signature="e#7807#7808#0" expanded="true" />
