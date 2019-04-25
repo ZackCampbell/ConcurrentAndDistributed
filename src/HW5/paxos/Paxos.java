@@ -139,8 +139,8 @@ public class Paxos implements PaxosRMI, Runnable{
             int toPropose = this.Min();
             ArrayList<Response> prepResponseList = new ArrayList<>();
             ArrayList<Response> accResponseList = new ArrayList<>();
-            for (int id : this.ports) {                               // Send "Prepare" request to all peers
-                Response prepResponse = this.Call("Prepare", new Request(toPropose), id);
+            for (int id = 0; id < this.ports.length; id++) {                               // Send "Prepare" request to all peers
+                Response prepResponse = this.Call("Prepare", new Request(toPropose, storage.getAcceptedValue()), id);
                 prepResponseList.add(prepResponse);
             }
             int prepCounter = 0;
@@ -155,13 +155,14 @@ public class Paxos implements PaxosRMI, Runnable{
                     }
                 }
             }
-            if (prepCounter > prepResponseList.size()) {
+            if (prepCounter > prepResponseList.size() / 2) {
                 prepResponseList.clear();
                 if (storage.getHighestAccept() <= currHighestProposal) {
                     storage.setAcceptedValue(highestValue);
+                    storageMap.put(this.seq, storage);
                 }
                 int accCounter = 0;
-                for (int id : this.ports) {                           // Send "Accept" request to all peers
+                for (int id = 0; id < this.ports.length; id++) {                           // Send "Accept" request to all peers
                     Response accResponse = this.Call("Accept", new Request(toPropose, storage.getAcceptedValue()), id);
                     accResponseList.add(accResponse);
                 }
@@ -170,19 +171,19 @@ public class Paxos implements PaxosRMI, Runnable{
                         accCounter++;
                     }
                 }
-                if (accCounter > accResponseList.size()) {
-                    for (int id : this.ports) {
+                if (accCounter > accResponseList.size() / 2) {
+                    for (int id = 0; id < this.ports.length; id++) {
                         Response decResponse = this.Call("Decide", new Request(storage.getAcceptedValue()), id);
+                        // Add forgetting here?
                     }
                 }
             }
         }
-        }
+    }
 
 
     // RMI handler
     public Response Prepare(Request req){
-
         if (req.getN() >= storage.getHighestPromise()) {
             storage.setHighestPromise(req.getN());
             return new Response(req.getN(), storage.getHighestAccept(), this.storage.getAcceptedValue());
@@ -196,6 +197,7 @@ public class Paxos implements PaxosRMI, Runnable{
             storage.setHighestPromise(req.getN());
             storage.setHighestAccept(req.getN());
             storage.setAcceptedValue(req.getV());
+            storageMap.put(this.seq, storage);
             return new Response(req.getN());
         } else {
             return new Response();
@@ -203,8 +205,9 @@ public class Paxos implements PaxosRMI, Runnable{
     }
 
     public Response Decide(Request req){
-        this.storage.setCurrentState(State.Decided);
-        this.storage.setAcceptedValue(req.getV());
+        storage.setCurrentState(State.Decided);
+        storage.setAcceptedValue(req.getV());
+        storageMap.put(this.seq, storage);
         return new Response(req.getV());
         // your code here
 
@@ -269,11 +272,12 @@ public class Paxos implements PaxosRMI, Runnable{
      */
     public int Min() {
         // Your code here
-        int min = Integer.MAX_VALUE;
+        int min = this.n;
         for(int n : doneList){
             if(n < min)
                 min = n;
         }
+        this.n = min + 1;
         return (min+1);
     }
 
@@ -351,35 +355,35 @@ public class Paxos implements PaxosRMI, Runnable{
             this.currentState = State.Pending;
         }
 
-        public State getCurrentState() {
+        public synchronized State getCurrentState() {
             return this.currentState;
         }
 
-        public void setCurrentState(State currentState) {
+        public synchronized void setCurrentState(State currentState) {
             this.currentState = currentState;
         }
 
-        public int getHighestAccept() {
+        public synchronized int getHighestAccept() {
             return this.highestAccept;
         }
 
-        public int getHighestPromise() {
+        public synchronized int getHighestPromise() {
             return this.highestPromise;
         }
 
-        public Object getAcceptedValue() {
+        public synchronized Object getAcceptedValue() {
             return this.acceptedValue;
         }
 
-        public void setAcceptedValue(Object v) {
+        public synchronized void setAcceptedValue(Object v) {
             this.acceptedValue = v;
         }
 
-        public void setHighestPromise(int n) {
+        public synchronized void setHighestPromise(int n) {
             this.highestPromise = n;
         }
 
-        public void setHighestAccept(int n) {
+        public synchronized void setHighestAccept(int n) {
             this.highestAccept = n;
         }
 
