@@ -324,10 +324,6 @@ public class Paxos implements PaxosRMI, Runnable{
             this.currentState = currentState;
         }
 
-//        public Object getHighestProposal() {
-//            return this.highestProposal;
-//        }
-
         public int getHighestAccept() {
             return this.highestAccept;
         }
@@ -351,10 +347,6 @@ public class Paxos implements PaxosRMI, Runnable{
         public void setHighestAccept(int n) {
             this.highestAccept = n;
         }
-
-//        public void setHighestProposal(int v) {
-//            this.highestProposal = v;
-//        }
 
     }
 

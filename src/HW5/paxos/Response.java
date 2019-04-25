@@ -29,5 +29,27 @@ public class Response implements Serializable {
         this.oldValue = oldValue;
     }
 
+    public Response(int seq) {
+        this.seq = seq;
+    }
+
+    public Response(Object value) {
+        this.value = value;
+    }
+
+    public Response(int seq, int oldReqNumber, Object value) {
+        this.seq = seq;
+        this.oldReqNumber = oldReqNumber;
+        this.value = value;
+    }
+
+    public int getN() {
+        return this.seq;
+    }
+
+    public Object getV() {
+        return this.value;
+    }
+
     // Your constructor and methods here
 }

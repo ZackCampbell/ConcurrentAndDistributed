@@ -10,9 +10,14 @@ import java.io.Serializable;
 public class Request implements Serializable {
     static final long serialVersionUID=1L;
     // Your data here
-    int seq;
-    int prepare;
-    Object value;
+    int seq = -1;
+    int prepare = -1;
+    Object value = null;
+
+
+    public Request(int toPropose) {
+        this.seq = toPropose;
+    }
 
     // constructor
     public Request(int seq, int prepare, Object value ){
@@ -21,14 +26,21 @@ public class Request implements Serializable {
         this.value = value;
     }
 
-    }
-
     public Request(int toPropose, Object value) {
-
+        this.seq = toPropose;
+        this.value = value;
     }
 
     public Request(Object value) {
+        this.value = value;
+    }
 
+    public int getN() {
+        return this.seq;
+    }
+
+    public Object getV() {
+        return this.value;
     }
 
     // Your constructor and methods here
