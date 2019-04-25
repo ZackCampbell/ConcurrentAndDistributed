@@ -14,6 +14,7 @@ public class Request implements Serializable {
     int prepare;
     Object value;
 
+    // constructor
     public Request(int seq, int prepare, Object value ){
         this.seq = seq;
         this.prepare = prepare;
