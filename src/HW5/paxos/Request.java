@@ -10,8 +10,16 @@ import java.io.Serializable;
 public class Request implements Serializable {
     static final long serialVersionUID=1L;
     // Your data here
+    int seq;
+    int prepare;
+    Object value;
 
-    public Request(int toPropose) {
+    // constructor
+    public Request(int seq, int prepare, Object value ){
+        this.seq = seq;
+        this.prepare = prepare;
+        this.value = value;
+    }
 
     }
 
