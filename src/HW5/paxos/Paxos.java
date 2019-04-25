@@ -236,7 +236,7 @@ public class Paxos implements PaxosRMI, Runnable{
                 max = n;
             }
         }
-        return max;
+        return max; //
 
     }
 
