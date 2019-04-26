@@ -4,8 +4,6 @@
     <list default="true" id="086dc031-0932-4f32-a620-77ba2287a5b2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HW5/paxos/Paxos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW5/paxos/Paxos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HW5/paxos/PaxosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW5/paxos/PaxosTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HW5/paxos/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW5/paxos/Response.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -32,19 +30,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HW5/paxos/Paxos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="129" column="41" lean-forward="true" selection-start-line="129" selection-start-column="41" selection-end-line="129" selection-end-column="41" />
+            <state relative-caret-position="663">
+              <caret line="211" column="49" lean-forward="true" selection-start-line="211" selection-start-column="49" selection-end-line="211" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#Status#0;class#Paxos#0" />
+                <element signature="docComment;method#Start#0;class#Paxos#0" />
                 <element signature="class#retStatus#0;class#Paxos#0" />
                 <element signature="method#Kill#0;class#Paxos#0" />
-                <element signature="e#11620#11621#0" expanded="true" />
-                <element signature="e#11658#11659#0" expanded="true" />
-                <element signature="e#11692#11693#0" expanded="true" />
-                <element signature="e#11739#11740#0" expanded="true" />
-                <element signature="e#11775#11776#0" expanded="true" />
-                <element signature="e#11819#11820#0" expanded="true" />
+                <element signature="e#11381#11382#0" expanded="true" />
+                <element signature="e#11419#11420#0" expanded="true" />
+                <element signature="e#11453#11454#0" expanded="true" />
+                <element signature="e#11500#11501#0" expanded="true" />
+                <element signature="e#11536#11537#0" expanded="true" />
+                <element signature="e#11580#11581#0" expanded="true" />
                 <element signature="class#Storage#0;class#Paxos#0" />
                 <element signature="e#12080#12081#0" expanded="true" />
                 <element signature="e#12137#12138#0" expanded="true" />
@@ -207,7 +205,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-70" />
     <option name="y" value="-10" />
     <option name="width" value="1940" />
@@ -261,7 +259,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556203682910" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556254987505" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -361,17 +359,11 @@
       <workItem from="1554045831520" duration="12103000" />
       <workItem from="1554236570661" duration="2000000" />
       <workItem from="1554993718075" duration="2108000" />
-      <workItem from="1556136930715" duration="18306000" />
+      <workItem from="1556136930715" duration="24652000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PaxosTest_TestBasic - 2019.04.25 at 09h 27m 06s.xml">
-      <configuration name="PaxosTest.TestBasic" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PaxosTest_TestBasic - 2019.04.25 at 09h 27m 47s.xml">
-      <configuration name="PaxosTest.TestBasic" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PaxosTest_TestBasic - 2019.04.25 at 09h 29m 34s.xml">
       <configuration name="PaxosTest.TestBasic" configurationId="JUnit" />
     </history-entry>
@@ -396,12 +388,18 @@
     <history-entry file="PaxosTest_TestBasic - 2019.04.25 at 09h 47m 25s.xml">
       <configuration name="PaxosTest.TestBasic" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PaxosTest - 2019.04.25 at 09h 48m 19s.xml">
+      <configuration name="PaxosTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PaxosTest - 2019.04.25 at 13h 49m 21s.xml">
+      <configuration name="PaxosTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144625000" />
+    <option name="totallyTimeSpent" value="150971000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15458423" />
@@ -413,7 +411,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Debug" order="2" visible="true" weight="0.3206934" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.3206934" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="5" />
@@ -803,19 +801,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HW5/paxos/Paxos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="129" column="41" lean-forward="true" selection-start-line="129" selection-start-column="41" selection-end-line="129" selection-end-column="41" />
+        <state relative-caret-position="663">
+          <caret line="211" column="49" lean-forward="true" selection-start-line="211" selection-start-column="49" selection-end-line="211" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Status#0;class#Paxos#0" />
+            <element signature="docComment;method#Start#0;class#Paxos#0" />
             <element signature="class#retStatus#0;class#Paxos#0" />
             <element signature="method#Kill#0;class#Paxos#0" />
-            <element signature="e#11620#11621#0" expanded="true" />
-            <element signature="e#11658#11659#0" expanded="true" />
-            <element signature="e#11692#11693#0" expanded="true" />
-            <element signature="e#11739#11740#0" expanded="true" />
-            <element signature="e#11775#11776#0" expanded="true" />
-            <element signature="e#11819#11820#0" expanded="true" />
+            <element signature="e#11381#11382#0" expanded="true" />
+            <element signature="e#11419#11420#0" expanded="true" />
+            <element signature="e#11453#11454#0" expanded="true" />
+            <element signature="e#11500#11501#0" expanded="true" />
+            <element signature="e#11536#11537#0" expanded="true" />
+            <element signature="e#11580#11581#0" expanded="true" />
             <element signature="class#Storage#0;class#Paxos#0" />
             <element signature="e#12080#12081#0" expanded="true" />
             <element signature="e#12137#12138#0" expanded="true" />

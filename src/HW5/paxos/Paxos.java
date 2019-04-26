@@ -140,7 +140,11 @@ public class Paxos implements PaxosRMI, Runnable{
             ArrayList<Response> prepResponseList = new ArrayList<>();
             ArrayList<Response> accResponseList = new ArrayList<>();
             for (int id = 0; id < this.ports.length; id++) {                               // Send "Prepare" request to all peers
-                Response prepResponse = this.Call("Prepare", new Request(toPropose, storage.getAcceptedValue()), id);
+                Response prepResponse;
+                if (!isunreliable())
+                    prepResponse = this.Call("Prepare", new Request(toPropose, storage.getAcceptedValue()), id);
+                else
+                    prepResponse = Prepare(new Request(toPropose, storage.getAcceptedValue()));
                 prepResponseList.add(prepResponse);
             }
             int prepCounter = 0;
@@ -163,7 +167,11 @@ public class Paxos implements PaxosRMI, Runnable{
                 }
                 int accCounter = 0;
                 for (int id = 0; id < this.ports.length; id++) {                           // Send "Accept" request to all peers
-                    Response accResponse = this.Call("Accept", new Request(toPropose, storage.getAcceptedValue()), id);
+                    Response accResponse;
+                    if (!isunreliable())
+                        accResponse = this.Call("Accept", new Request(toPropose, storage.getAcceptedValue()), id);
+                    else
+                        accResponse = Accept(new Request(toPropose, storage.getAcceptedValue()));
                     accResponseList.add(accResponse);
                 }
                 for (Response r : accResponseList) {
@@ -172,8 +180,13 @@ public class Paxos implements PaxosRMI, Runnable{
                     }
                 }
                 if (accCounter > accResponseList.size() / 2) {
+                    accResponseList.clear();
                     for (int id = 0; id < this.ports.length; id++) {
-                        Response decResponse = this.Call("Decide", new Request(storage.getAcceptedValue()), id);
+                        Response decResponse;
+                        if (!isunreliable())
+                            decResponse = this.Call("Decide", new Request(storage.getAcceptedValue()), id);
+                        else
+                            decResponse = Decide(new Request(storage.getAcceptedValue()));
                         // Add forgetting here?
                     }
                 }
@@ -208,6 +221,9 @@ public class Paxos implements PaxosRMI, Runnable{
         storage.setCurrentState(State.Decided);
         storage.setAcceptedValue(req.getV());
         storageMap.put(this.seq, storage);
+//        if (this.seq < Min()) {
+//            Done(this.seq);
+//        }
         return new Response(req.getV());
         // your code here
 
@@ -271,17 +287,16 @@ public class Paxos implements PaxosRMI, Runnable{
      * instances.
      */
     public int Min() {
-        // Your code here
         int min = this.n;
         for(int n : doneList){
             if(n < min)
                 min = n;
         }
-        this.n = min + 1;
+//        this.n = min + 1;
         return (min+1);
     }
 
-    public void forgot(){
+    public void forget(){
         int min = Min();
         for(int n : storageMap.keySet()){
             if(n < min)
@@ -297,6 +312,9 @@ public class Paxos implements PaxosRMI, Runnable{
      * it should not contact other Paxos peers.
      */
     public retStatus Status(int seq){
+        if (seq < Min()) {
+            return new retStatus(State.Forgotten, this.storage.acceptedValue);
+        }
         return new retStatus(this.storage.currentState, this.storage.acceptedValue);
         // Your code here
 
