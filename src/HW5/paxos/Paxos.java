@@ -136,15 +136,15 @@ public class Paxos implements PaxosRMI, Runnable{
     @Override
     public void run(){
         while (this.Status(this.me).state != State.Decided && !this.isDead()) {
-            int toPropose = this.Min();
+            int toPropose = this.storage.getHighestPromise() + 1;
             ArrayList<Response> prepResponseList = new ArrayList<>();
             ArrayList<Response> accResponseList = new ArrayList<>();
             for (int id = 0; id < this.ports.length; id++) {                               // Send "Prepare" request to all peers
                 Response prepResponse;
                 if (!isunreliable())
-                    prepResponse = this.Call("Prepare", new Request(toPropose, storage.getAcceptedValue()), id);
+                    prepResponse = this.Call("Prepare", new Request(toPropose, storage.getAcceptedValue(), doneList), id);
                 else
-                    prepResponse = Prepare(new Request(toPropose, storage.getAcceptedValue()));
+                    prepResponse = Prepare(new Request(toPropose, storage.getAcceptedValue(), doneList));
                 prepResponseList.add(prepResponse);
             }
             int prepCounter = 0;
@@ -159,6 +159,7 @@ public class Paxos implements PaxosRMI, Runnable{
                     }
                 }
             }
+//            storage.setHighestPromise(currHighestProposal);
             if (prepCounter > prepResponseList.size() / 2) {
                 prepResponseList.clear();
                 if (storage.getHighestAccept() <= currHighestProposal) {
@@ -169,9 +170,9 @@ public class Paxos implements PaxosRMI, Runnable{
                 for (int id = 0; id < this.ports.length; id++) {                           // Send "Accept" request to all peers
                     Response accResponse;
                     if (!isunreliable())
-                        accResponse = this.Call("Accept", new Request(toPropose, storage.getAcceptedValue()), id);
+                        accResponse = this.Call("Accept", new Request(toPropose, storage.getAcceptedValue(), doneList), id);
                     else
-                        accResponse = Accept(new Request(toPropose, storage.getAcceptedValue()));
+                        accResponse = Accept(new Request(toPropose, storage.getAcceptedValue(), doneList));
                     accResponseList.add(accResponse);
                 }
                 for (Response r : accResponseList) {
@@ -184,10 +185,9 @@ public class Paxos implements PaxosRMI, Runnable{
                     for (int id = 0; id < this.ports.length; id++) {
                         Response decResponse;
                         if (!isunreliable())
-                            decResponse = this.Call("Decide", new Request(storage.getAcceptedValue()), id);
+                            decResponse = this.Call("Decide", new Request(toPropose, storage.getAcceptedValue(), doneList), id);
                         else
-                            decResponse = Decide(new Request(storage.getAcceptedValue()));
-                        // Add forgetting here?
+                            decResponse = Decide(new Request(toPropose, storage.getAcceptedValue(), doneList));
                     }
                 }
             }
@@ -199,7 +199,7 @@ public class Paxos implements PaxosRMI, Runnable{
     public Response Prepare(Request req){
         if (req.getN() >= storage.getHighestPromise()) {
             storage.setHighestPromise(req.getN());
-            return new Response(req.getN(), storage.getHighestAccept(), this.storage.getAcceptedValue());
+            return new Response(req.getN(), storage.getHighestAccept(), this.storage.getAcceptedValue(), doneList);
         } else {
             return new Response();
         }
@@ -211,7 +211,7 @@ public class Paxos implements PaxosRMI, Runnable{
             storage.setHighestAccept(req.getN());
             storage.setAcceptedValue(req.getV());
             storageMap.put(this.seq, storage);
-            return new Response(req.getN());
+            return new Response(req.getN(), doneList);
         } else {
             return new Response();
         }
@@ -221,10 +221,8 @@ public class Paxos implements PaxosRMI, Runnable{
         storage.setCurrentState(State.Decided);
         storage.setAcceptedValue(req.getV());
         storageMap.put(this.seq, storage);
-//        if (this.seq < Min()) {
-//            Done(this.seq);
-//        }
-        return new Response(req.getV());
+        updateDoneList(req.getDonelist(), req.getN());
+        return new Response(req.getV(), doneList);
         // your code here
 
     }
@@ -236,10 +234,17 @@ public class Paxos implements PaxosRMI, Runnable{
      * see the comments for Min() for more explanation.
      */
     public void Done(int seq) {
-        this.doneList[this.me] = seq;
+        if (doneList[this.me] < seq)
+            doneList[this.me] = seq;
+        forget();
         // Your code here
     }
 
+
+    public void updateDoneList(int[] otherList, int otherSeq) {
+        if (doneList[otherSeq] < otherList[otherSeq])
+            doneList[otherSeq] = otherList[otherSeq];
+    }
 
     /**
      * The application wants to know the
@@ -287,21 +292,28 @@ public class Paxos implements PaxosRMI, Runnable{
      * instances.
      */
     public int Min() {
-        int min = this.n;
-        for(int n : doneList){
-            if(n < min)
-                min = n;
-        }
-//        this.n = min + 1;
-        return (min+1);
+//        int min = doneList[this.me];
+//        for(int n : doneList){
+//            if(n < min)
+//                min = n;
+//        }
+////        this.n = min + 1;
+//        return (min+1);
+        return forget() + 1;
     }
 
-    public void forget(){
-        int min = Min();
-        for(int n : storageMap.keySet()){
+    public int forget(){
+        int min = doneList[this.me];
+        for (int n : storageMap.keySet()) {
             if(n < min)
-                storageMap.remove(n);
+                min = n;
+
         }
+        for (int key : storageMap.keySet()) {
+            if (key < min)
+                storageMap.remove(min);
+        }
+        return min;
     }
 
     /**

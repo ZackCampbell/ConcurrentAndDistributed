@@ -13,25 +13,30 @@ public class Request implements Serializable {
     int seq = -1;
     int prepare = -1;
     Object value = null;
+    int[] donelist = null;
 
 
-    public Request(int toPropose) {
+    public Request(int toPropose, int[] donelist) {
+        this.donelist = donelist;
         this.seq = toPropose;
     }
 
     // constructor
-    public Request(int seq, int prepare, Object value ){
+    public Request(int seq, int prepare, Object value, int[] donelist){
+        this.donelist = donelist;
         this.seq = seq;
         this.prepare = prepare;
         this.value = value;
     }
 
-    public Request(int toPropose, Object value) {
+    public Request(int toPropose, Object value, int[] donelist) {
+        this.donelist = donelist;
         this.seq = toPropose;
         this.value = value;
     }
 
-    public Request(Object value) {
+    public Request(Object value, int[] donelist) {
+        this.donelist = donelist;
         this.value = value;
     }
 
@@ -41,6 +46,10 @@ public class Request implements Serializable {
 
     public Object getV() {
         return this.value;
+    }
+
+    public int[] getDonelist() {
+        return this.donelist;
     }
 
     // Your constructor and methods here
