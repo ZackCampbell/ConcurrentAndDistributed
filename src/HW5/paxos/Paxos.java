@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -30,6 +31,7 @@ public class Paxos implements PaxosRMI, Runnable{
     int n = -1;
     int totalPeers;
     int[] doneList;
+    AtomicInteger minimum;
 
     // Your data here
 
@@ -53,6 +55,8 @@ public class Paxos implements PaxosRMI, Runnable{
         //this.valueMap = new ConcurrentHashMap<Integer, Object>();
         this.storage = new Storage();
         this.totalPeers = peers.length;
+        this.minimum = new AtomicInteger();
+        this.minimum.set(-1);
         this.doneList = new int[peers.length];
         for(int i = 0; i < peers.length; i++){
             doneList[i] = -1;
@@ -135,16 +139,16 @@ public class Paxos implements PaxosRMI, Runnable{
 
     @Override
     public void run(){
-        while (this.Status(this.me).state != State.Decided && !this.isDead()) {
+        while (this.Status(this.me).state != State.Decided) {
             int toPropose = this.storage.getHighestPromise() + 1;
             ArrayList<Response> prepResponseList = new ArrayList<>();
             ArrayList<Response> accResponseList = new ArrayList<>();
             for (int id = 0; id < this.ports.length; id++) {                               // Send "Prepare" request to all peers
                 Response prepResponse;
-                if (!isunreliable())
-                    prepResponse = this.Call("Prepare", new Request(toPropose, storage.getAcceptedValue(), doneList), id);
+                if (!isunreliable() && id != this.me)
+                    prepResponse = this.Call("Prepare", new Request(toPropose, storage.getAcceptedValue()), id);
                 else
-                    prepResponse = Prepare(new Request(toPropose, storage.getAcceptedValue(), doneList));
+                    prepResponse = Prepare(new Request(toPropose, storage.getAcceptedValue()));
                 prepResponseList.add(prepResponse);
             }
             int prepCounter = 0;
@@ -169,10 +173,10 @@ public class Paxos implements PaxosRMI, Runnable{
                 int accCounter = 0;
                 for (int id = 0; id < this.ports.length; id++) {                           // Send "Accept" request to all peers
                     Response accResponse;
-                    if (!isunreliable())
-                        accResponse = this.Call("Accept", new Request(toPropose, storage.getAcceptedValue(), doneList), id);
+                    if (!isunreliable() && id != this.me)
+                        accResponse = this.Call("Accept", new Request(toPropose, storage.getAcceptedValue()), id);
                     else
-                        accResponse = Accept(new Request(toPropose, storage.getAcceptedValue(), doneList));
+                        accResponse = Accept(new Request(toPropose, storage.getAcceptedValue()));
                     accResponseList.add(accResponse);
                 }
                 for (Response r : accResponseList) {
@@ -184,10 +188,10 @@ public class Paxos implements PaxosRMI, Runnable{
                     accResponseList.clear();
                     for (int id = 0; id < this.ports.length; id++) {
                         Response decResponse;
-                        if (!isunreliable())
-                            decResponse = this.Call("Decide", new Request(toPropose, storage.getAcceptedValue(), doneList), id);
+                        if (!isunreliable() && id != this.me)
+                            decResponse = this.Call("Decide", new Request(toPropose, storage.getAcceptedValue()), id);
                         else
-                            decResponse = Decide(new Request(toPropose, storage.getAcceptedValue(), doneList));
+                            decResponse = Decide(new Request(toPropose, storage.getAcceptedValue()));
                     }
                 }
             }
@@ -199,9 +203,9 @@ public class Paxos implements PaxosRMI, Runnable{
     public Response Prepare(Request req){
         if (req.getN() >= storage.getHighestPromise()) {
             storage.setHighestPromise(req.getN());
-            return new Response(req.getN(), storage.getHighestAccept(), this.storage.getAcceptedValue(), doneList);
+            return new Response(req.getN(), storage.getHighestAccept(), this.storage.getAcceptedValue(), this.minimum.get());
         } else {
-            return new Response();
+            return new Response(this.minimum.get());
         }
     }
 
@@ -211,9 +215,9 @@ public class Paxos implements PaxosRMI, Runnable{
             storage.setHighestAccept(req.getN());
             storage.setAcceptedValue(req.getV());
             storageMap.put(this.seq, storage);
-            return new Response(req.getN(), doneList);
+            return new Response(req.getN(), this.minimum.get());
         } else {
-            return new Response();
+            return new Response(this.minimum.get());
         }
     }
 
@@ -221,8 +225,8 @@ public class Paxos implements PaxosRMI, Runnable{
         storage.setCurrentState(State.Decided);
         storage.setAcceptedValue(req.getV());
         storageMap.put(this.seq, storage);
-        updateDoneList(req.getDonelist(), req.getN());
-        return new Response(req.getV(), doneList);
+//        updateDoneList(req.getDone(), req.getN());
+        return new Response(req.getV(), this.minimum.get());
         // your code here
 
     }
@@ -234,12 +238,17 @@ public class Paxos implements PaxosRMI, Runnable{
      * see the comments for Min() for more explanation.
      */
     public void Done(int seq) {
-        if (doneList[this.me] < seq)
-            doneList[this.me] = seq;
-        forget();
+        int min = Math.max(minimum.get(), 0);
+        for (int i = min; i <= seq; i++) {
+//            while (storageMap.get(i).getCurrentState() != State.Decided) {
+//                System.out.println("State at " + i + " has not been decided");
+//            }
+            minimum.set(i);
+        }
+
+        //forget();
         // Your code here
     }
-
 
     public void updateDoneList(int[] otherList, int otherSeq) {
         if (doneList[otherSeq] < otherList[otherSeq])
@@ -303,7 +312,7 @@ public class Paxos implements PaxosRMI, Runnable{
     }
 
     public int forget(){
-        int min = doneList[this.me];
+        int min = minimum.get();
         for (int n : storageMap.keySet()) {
             if(n < min)
                 min = n;
@@ -324,7 +333,7 @@ public class Paxos implements PaxosRMI, Runnable{
      * it should not contact other Paxos peers.
      */
     public retStatus Status(int seq){
-        if (seq < Min()) {
+        if (seq < minimum.get()) {
             return new retStatus(State.Forgotten, this.storage.acceptedValue);
         }
         return new retStatus(this.storage.currentState, this.storage.acceptedValue);

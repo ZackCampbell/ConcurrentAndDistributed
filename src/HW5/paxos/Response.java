@@ -14,12 +14,11 @@ public class Response implements Serializable {
     Object oldValue;  // v a (highest accept object seen)
     boolean accept = true;
     Object value;
+    int done = -1;
 
-    int[] donelist = null;
-
-
-    public Response(){
+    public Response(int done){
         this.accept = false;
+        this.done = done;
     }
 
 //    public Response(int seq, Object value, boolean accept, int oldReqNumber, Object oldValue){
@@ -30,18 +29,18 @@ public class Response implements Serializable {
 //        this.oldValue = oldValue;
 //    }
 
-    public Response(int seq, int[] donelist) {
-        this.donelist = donelist;
+    public Response(int seq, int done) {
+        this.done = done;
         this.seq = seq;
     }
 
-    public Response(Object value, int[] donelist) {
-        this.donelist = donelist;
+    public Response(Object value, int done) {
+        this.done = done;
         this.value = value;
     }
 
-    public Response(int seq, int oldReqNumber, Object value, int[] donelist) {
-        this.donelist = donelist;
+    public Response(int seq, int oldReqNumber, Object value, int done) {
+        this.done = done;
         this.seq = seq;
         this.oldReqNumber = oldReqNumber;
         this.value = value;
@@ -59,8 +58,8 @@ public class Response implements Serializable {
         return this.accept;
     }
 
-    public int[] getDonelist() {
-        return this.donelist;
+    public int getDone() {
+        return this.done;
     }
 
     // Your constructor and methods here
