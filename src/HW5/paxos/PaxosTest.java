@@ -215,7 +215,6 @@ public class PaxosTest {
                 ok = true;
                 for(int i = 0; i < npaxos; i++){
                     int s = pxa[i].Min();
-                    System.out.println(s);
                     if(s != 1){
                         ok = false;
                     }

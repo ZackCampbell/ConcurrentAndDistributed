@@ -9,15 +9,16 @@ import java.io.Serializable;
 public class Response implements Serializable {
     static final long serialVersionUID=2L;
     // your data here
-    int seq;
-    int oldReqNumber; // n a (highest accept request # seen)
-    Object oldValue;  // v a (highest accept object seen)
-    boolean accept = true;
-    Object value;
+    int n;
+    int n_a;
+    boolean reject = false;
+    boolean isDecided = false;
+    Object v;
+    Object v_a;
     int done = -1;
 
     public Response(int done){
-        this.accept = false;
+        this.reject = true;
         this.done = done;
     }
 
@@ -29,33 +30,48 @@ public class Response implements Serializable {
 //        this.oldValue = oldValue;
 //    }
 
-    public Response(int seq, int done) {
+    public Response(int n, int done) {
         this.done = done;
-        this.seq = seq;
+        this.n = n;
     }
 
     public Response(Object value, int done) {
         this.done = done;
-        this.value = value;
+        this.v = value;
     }
 
-    public Response(int seq, int oldReqNumber, Object value, int done) {
+    public Response(Object value, int done, boolean isDecided) {
         this.done = done;
-        this.seq = seq;
-        this.oldReqNumber = oldReqNumber;
-        this.value = value;
+        this.v = value;
+        this.isDecided = isDecided;
+    }
+
+    public Response(int n, int n_a, Object v_a, int done) {
+        this.done = done;
+        this.n = n;
+        this.n_a = n_a;
+        this.done = done;
+        this.v_a = v_a;
     }
 
     public int getN() {
-        return this.seq;
+        return this.n;
+    }
+
+    public int getNA() {
+        return this.n_a;
+    }
+
+    public Object getVA() {
+        return this.v_a;
     }
 
     public Object getV() {
-        return this.value;
+        return this.v;
     }
 
-    public boolean getAccept() {
-        return this.accept;
+    public boolean getReject() {
+        return this.reject;
     }
 
     public int getDone() {

@@ -10,32 +10,41 @@ import java.io.Serializable;
 public class Request implements Serializable {
     static final long serialVersionUID=1L;
     // Your data here
-    int seq = -1;
+    int n = -1;
+    int seq = 0;
     int prepare = -1;
     Object value = null;
 
 
-    public Request(int toPropose) {
-        this.seq = toPropose;
+    public Request(int toPropose, int seq) {
+        this.n = toPropose;
+        this.seq = seq;
     }
 
     // constructor
-    public Request(int seq, int prepare, Object value){
-        this.seq = seq;
+    public Request(int n, int prepare, Object value, int seq){
+        this.n = n;
         this.prepare = prepare;
         this.value = value;
+        this.seq = seq;
     }
 
-    public Request(int toPropose, Object value) {
-        this.seq = toPropose;
+    public Request(int toPropose, Object value, int seq) {
+        this.n = toPropose;
         this.value = value;
+        this.seq = seq;
     }
 
-    public Request(Object value) {
+    public Request(Object value, int seq) {
         this.value = value;
+        this.seq = seq;
     }
 
     public int getN() {
+        return this.n;
+    }
+
+    public int getSeq() {
         return this.seq;
     }
 

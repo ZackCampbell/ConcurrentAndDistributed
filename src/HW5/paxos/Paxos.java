@@ -26,9 +26,8 @@ public class Paxos implements PaxosRMI, Runnable{
     AtomicBoolean unreliable;// for testing
 
     Map<Integer, Storage> storageMap;
-    Storage storage;
+    Map<Integer, Integer> seqMap;
     int seq = -1;
-    int n = -1;
     int totalPeers;
     int[] doneList;
     AtomicInteger minimum;
@@ -51,17 +50,14 @@ public class Paxos implements PaxosRMI, Runnable{
         this.unreliable = new AtomicBoolean(false);
 
         // Your initialization code here
-        this.storageMap = new ConcurrentHashMap<Integer, Storage>();
-        //this.valueMap = new ConcurrentHashMap<Integer, Object>();
-        this.storage = new Storage();
+        this.storageMap = new ConcurrentHashMap<>();
+        this.seqMap = new ConcurrentHashMap<>();
         this.totalPeers = peers.length;
-        this.minimum = new AtomicInteger();
-        this.minimum.set(-1);
+        this.minimum = new AtomicInteger(-1);
         this.doneList = new int[peers.length];
         for(int i = 0; i < peers.length; i++){
             doneList[i] = -1;
         }
-
 
         // register peers, do not modify this part
         try{
@@ -128,56 +124,67 @@ public class Paxos implements PaxosRMI, Runnable{
      * is reached.
      */
     public void Start(int seq, Object value){
-        if (seq >= Min() && this.storage.getCurrentState() != State.Decided) {
+        if (!seqMap.containsValue(seq))
+            mutex.lock();
             this.seq = seq;
-            storage.setAcceptedValue(value);
-            storageMap.put(seq, storage);
+            Storage storage = new Storage(value);
             Thread newInstance = new Thread(this);
+            seqMap.put((int)newInstance.getId(), this.seq);
+            storageMap.put(this.seq, storage);
             newInstance.start();
-        }
+            mutex.unlock();
     }
 
     @Override
     public void run(){
-        while (this.Status(this.me).state != State.Decided) {
-            int toPropose = this.storage.getHighestPromise() + 1;
-            ArrayList<Response> prepResponseList = new ArrayList<>();
+        int seq = seqMap.get((int)Thread.currentThread().getId());
+        Storage storage = storageMap.get(seq);
+        while (storage.state != State.Decided) {
+            storage.mutex.lock();
+            storage.n = storage.n_p + this.me;
+            storage.n_prime = 0;
+            storage.mutex.unlock();
             ArrayList<Response> accResponseList = new ArrayList<>();
+            ArrayList<Response> prepResponseList = new ArrayList<>();
+            int prepCounter = 0;
             for (int id = 0; id < this.ports.length; id++) {                               // Send "Prepare" request to all peers
                 Response prepResponse;
-                if (!isunreliable() && id != this.me)
-                    prepResponse = this.Call("Prepare", new Request(toPropose, storage.getAcceptedValue()), id);
+                if (id != this.me)
+                    prepResponse = this.Call("Prepare", new Request(storage.n, storage.v, seq), id);
                 else
-                    prepResponse = Prepare(new Request(toPropose, storage.getAcceptedValue()));
-                prepResponseList.add(prepResponse);
-            }
-            int prepCounter = 0;
-            int currHighestProposal = -1;
-            Object highestValue = null;
-            for (Response r : prepResponseList) {
-                if (r != null) {
+                    prepResponse = Prepare(new Request(storage.n, storage.v, seq));
+                if (prepResponse != null && !prepResponse.getReject()) {
+                    doneList[id] = prepResponse.getDone();
+                    prepResponseList.add(prepResponse);
                     prepCounter++;
-                    if (r.getN() > currHighestProposal) {
-                        currHighestProposal = r.getN();
-                        highestValue = r.getV();
-                    }
+                }
+            }
+            for (Response r : prepResponseList) {
+                if (r.getNA() > storage.n_prime) {
+                    storage.mutex.lock();
+                    storage.n_prime = r.getNA();
+                    storage.v_prime = r.getVA();
+                    storage.mutex.unlock();
                 }
             }
 //            storage.setHighestPromise(currHighestProposal);
-            if (prepCounter > prepResponseList.size() / 2) {
-                prepResponseList.clear();
-                if (storage.getHighestAccept() <= currHighestProposal) {
-                    storage.setAcceptedValue(highestValue);
-                    storageMap.put(this.seq, storage);
+            if (prepCounter > peers.length / 2) {
+                if (storage.n_prime < storage.n) {
+                    storage.mutex.lock();
+                    storage.v_prime = storage.v;
+                    storage.mutex.unlock();
                 }
                 int accCounter = 0;
                 for (int id = 0; id < this.ports.length; id++) {                           // Send "Accept" request to all peers
                     Response accResponse;
-                    if (!isunreliable() && id != this.me)
-                        accResponse = this.Call("Accept", new Request(toPropose, storage.getAcceptedValue()), id);
+                    if (id != this.me)
+                        accResponse = this.Call("Accept", new Request(storage.n, storage.v_prime, seq), id);
                     else
-                        accResponse = Accept(new Request(toPropose, storage.getAcceptedValue()));
-                    accResponseList.add(accResponse);
+                        accResponse = Accept(new Request(storage.n, storage.v_prime, seq));
+                    if (accResponse != null && !accResponse.getReject()) {
+                        doneList[id] = accResponse.getDone();
+                        accResponseList.add(accResponse);
+                    }
                 }
                 for (Response r : accResponseList) {
                     if (r != null) {
@@ -188,10 +195,13 @@ public class Paxos implements PaxosRMI, Runnable{
                     accResponseList.clear();
                     for (int id = 0; id < this.ports.length; id++) {
                         Response decResponse;
-                        if (!isunreliable() && id != this.me)
-                            decResponse = this.Call("Decide", new Request(toPropose, storage.getAcceptedValue()), id);
+                        if (id != this.me)
+                            decResponse = this.Call("Decide", new Request(storage.v, seq), id);
                         else
-                            decResponse = Decide(new Request(toPropose, storage.getAcceptedValue()));
+                            decResponse = Decide(new Request(storage.v, seq));
+                        if (decResponse != null) {
+                            doneList[id] = decResponse.getDone();
+                        }
                     }
                 }
             }
@@ -201,34 +211,54 @@ public class Paxos implements PaxosRMI, Runnable{
 
     // RMI handler
     public Response Prepare(Request req){
-        if (req.getN() >= storage.getHighestPromise()) {
-            storage.setHighestPromise(req.getN());
-            return new Response(req.getN(), storage.getHighestAccept(), this.storage.getAcceptedValue(), this.minimum.get());
+        Storage storage = storageMap.get(req.getSeq());
+        if (storage == null) {
+            storage = new Storage(req.getV());
+            storage.n_p = req.getN();
+            storageMap.put(req.getSeq(), storage);
+            return new Response(req.getN(), storage.n_a, storage.v_prime, this.minimum.get());
+        } else if (req.getN() >= storage.n_p) {
+            storage.n_p = req.getN();
+            return new Response(req.getN(), storage.n_a, storage.v_a, this.minimum.get());
         } else {
             return new Response(this.minimum.get());
         }
     }
 
     public Response Accept(Request req){
-        if (req.getN() >= storage.getHighestPromise()) {
-            storage.setHighestPromise(req.getN());
-            storage.setHighestAccept(req.getN());
-            storage.setAcceptedValue(req.getV());
-            storageMap.put(this.seq, storage);
-            return new Response(req.getN(), this.minimum.get());
-        } else {
-            return new Response(this.minimum.get());
+        Response response;
+        try {
+            Storage storage = getStorage(req);
+            if (req.getN() >= storage.n_p) {
+                storage.n_p = req.getN();
+                storage.n_a = req.getN();
+                storage.v_a = req.getV();
+                response = new Response(req.getN(), this.minimum.get());
+            } else {
+                response = new Response(this.minimum.get());
+            }
+        } catch (InterruptedException e) {
+            response = null;
         }
+        return response;
+    }
+
+    private Storage getStorage(Request req) throws InterruptedException {
+        Storage storage = storageMap.get(req.getSeq());
+        while (storage == null) {
+            Thread.sleep(100);
+            storage = storageMap.get(req.getSeq());
+        }
+        return storage;
     }
 
     public Response Decide(Request req){
-        storage.setCurrentState(State.Decided);
-        storage.setAcceptedValue(req.getV());
-        storageMap.put(this.seq, storage);
-//        updateDoneList(req.getDone(), req.getN());
-        return new Response(req.getV(), this.minimum.get());
-        // your code here
-
+        try {
+            Storage storage = getStorage(req);
+            storage.state = State.Decided;
+            storage.retValue = req.getV();
+        } catch (InterruptedException e) {}
+        return new Response(req.getV(), this.minimum.get(), true);
     }
 
     /**
@@ -240,19 +270,8 @@ public class Paxos implements PaxosRMI, Runnable{
     public void Done(int seq) {
         int min = Math.max(minimum.get(), 0);
         for (int i = min; i <= seq; i++) {
-//            while (storageMap.get(i).getCurrentState() != State.Decided) {
-//                System.out.println("State at " + i + " has not been decided");
-//            }
             minimum.set(i);
         }
-
-        //forget();
-        // Your code here
-    }
-
-    public void updateDoneList(int[] otherList, int otherSeq) {
-        if (doneList[otherSeq] < otherList[otherSeq])
-            doneList[otherSeq] = otherList[otherSeq];
     }
 
     /**
@@ -270,6 +289,10 @@ public class Paxos implements PaxosRMI, Runnable{
         }
         return max; //
 
+    }
+
+    public Response getMinimum() {
+        return new Response(this.minimum.get());
     }
 
     /**
@@ -301,26 +324,25 @@ public class Paxos implements PaxosRMI, Runnable{
      * instances.
      */
     public int Min() {
-//        int min = doneList[this.me];
-//        for(int n : doneList){
-//            if(n < min)
-//                min = n;
-//        }
-////        this.n = min + 1;
-//        return (min+1);
         return forget() + 1;
     }
 
     public int forget(){
-        int min = minimum.get();
-        for (int n : storageMap.keySet()) {
-            if(n < min)
-                min = n;
-
+        int min = 0;
+        for (int id = 0; id < peers.length; id++) {
+            if (id == this.me)
+                min = Math.min(min, getMinimum().getDone());
+            else
+                min = Math.min(min, doneList[id]);
         }
         for (int key : storageMap.keySet()) {
             if (key < min)
                 storageMap.remove(min);
+        }
+        for (int i : seqMap.keySet()) {
+            if (seqMap.get(i) < min) {
+                seqMap.remove(i);
+            }
         }
         return min;
     }
@@ -333,10 +355,15 @@ public class Paxos implements PaxosRMI, Runnable{
      * it should not contact other Paxos peers.
      */
     public retStatus Status(int seq){
-        if (seq < minimum.get()) {
-            return new retStatus(State.Forgotten, this.storage.acceptedValue);
+        Storage storage = storageMap.get(seq);
+        if (seq < minimum.get() && storage == null) {
+            return new retStatus(State.Forgotten, null);
+        } else if (storage == null && seq >= minimum.get()) {
+            return new retStatus(State.Pending, null);
         }
-        return new retStatus(this.storage.currentState, this.storage.acceptedValue);
+        return new retStatus(storage.state, storage.retValue);
+
+
         // Your code here
 
     }
@@ -384,48 +411,22 @@ public class Paxos implements PaxosRMI, Runnable{
 
 
     class Storage {
-        int highestPromise = -1;        // n_p
-        int highestAccept = -1;         // n_a
-        //int highestProposal = -1;
-        State currentState;
-        Object acceptedValue = null;    // v and v_a
+        ReentrantLock mutex;
+        int n;
+        int n_prime;
+        int n_p = -1;
+        int n_a = 0;
+        State state;
+        Object v_a = null;
+        Object v;
+        Object v_prime;
+        Object retValue;
 
-        public Storage() {
-            this.currentState = State.Pending;
+        public Storage(Object v) {
+            this.mutex = new ReentrantLock();
+            this.state = State.Pending;
+            this.v = v;
         }
-
-        public synchronized State getCurrentState() {
-            return this.currentState;
-        }
-
-        public synchronized void setCurrentState(State currentState) {
-            this.currentState = currentState;
-        }
-
-        public synchronized int getHighestAccept() {
-            return this.highestAccept;
-        }
-
-        public synchronized int getHighestPromise() {
-            return this.highestPromise;
-        }
-
-        public synchronized Object getAcceptedValue() {
-            return this.acceptedValue;
-        }
-
-        public synchronized void setAcceptedValue(Object v) {
-            this.acceptedValue = v;
-        }
-
-        public synchronized void setHighestPromise(int n) {
-            this.highestPromise = n;
-        }
-
-        public synchronized void setHighestAccept(int n) {
-            this.highestAccept = n;
-        }
-
     }
 
 }
