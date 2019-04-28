@@ -15,7 +15,6 @@ public class Request implements Serializable {
     int prepare = -1;
     Object value = null;
 
-
     public Request(int toPropose, int seq) {
         this.n = toPropose;
         this.seq = seq;
@@ -29,9 +28,9 @@ public class Request implements Serializable {
         this.seq = seq;
     }
 
-    public Request(int toPropose, Object value, int seq) {
+    public Request(int toPropose, Object v, int seq) {
         this.n = toPropose;
-        this.value = value;
+        this.value = v;
         this.seq = seq;
     }
 
