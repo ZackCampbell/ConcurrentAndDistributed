@@ -1,4 +1,4 @@
-package HW5.paxos;
+package paxos;
 import java.io.Serializable;
 
 /**

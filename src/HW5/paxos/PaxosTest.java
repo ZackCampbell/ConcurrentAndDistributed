@@ -1,4 +1,4 @@
-package HW5.paxos;
+package paxos;
 
 import org.junit.Test;
 

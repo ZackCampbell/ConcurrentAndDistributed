@@ -1,4 +1,4 @@
-package HW5.paxos;
+package paxos;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.registry.Registry;
