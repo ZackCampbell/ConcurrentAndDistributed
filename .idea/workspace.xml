@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="086dc031-0932-4f32-a620-77ba2287a5b2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW5/paxos/Paxos$Storage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW5/paxos/Paxos$Storage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW5/paxos/Paxos$retStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW5/paxos/Paxos$retStatus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW5/paxos/Paxos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ConcurrentAndDistributed/HW5/paxos/Paxos.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HW5/paxos/Paxos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW5/paxos/Paxos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HW5/paxos/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HW5/paxos/Request.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,33 +29,31 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HW5/paxos/Paxos.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="227" column="9" lean-forward="true" selection-start-line="227" selection-start-column="9" selection-end-line="227" selection-end-column="9" />
+            <state relative-caret-position="501">
+              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;method#Call#0;class#Paxos#0" />
                 <element signature="method#Call#0;class#Paxos#0" />
                 <element signature="docComment;method#Start#0;class#Paxos#0" />
+                <element signature="method#run#0;class#Paxos#0" />
+                <element signature="method#Prepare#0;class#Paxos#0" />
+                <element signature="method#Accept#0;class#Paxos#0" />
                 <element signature="method#getStorage#0;class#Paxos#0" />
+                <element signature="method#Decide#0;class#Paxos#0" />
                 <element signature="docComment;method#Done#0;class#Paxos#0" />
                 <element signature="method#Done#0;class#Paxos#0" />
                 <element signature="docComment;method#Max#0;class#Paxos#0" />
                 <element signature="method#Max#0;class#Paxos#0" />
-                <element signature="e#10676#10732#1" />
-                <element signature="e#10955#10956#0" expanded="true" />
+                <element signature="e#10899#10900#0" expanded="true" />
+                <element signature="e#10954#10955#0" expanded="true" />
                 <element signature="docComment;method#Min#0;class#Paxos#0" />
-                <element signature="e#11991#12027#1" />
-                <element signature="e#12250#12251#0" expanded="true" />
+                <element signature="e#12214#12215#0" expanded="true" />
+                <element signature="e#12249#12250#0" expanded="true" />
                 <element signature="method#forget#0;class#Paxos#0" />
                 <element signature="method#Status#0;class#Paxos#0" />
                 <element signature="class#retStatus#0;class#Paxos#0" />
                 <element signature="method#Kill#0;class#Paxos#0" />
-                <element signature="e#14271#14272#0" expanded="true" />
-                <element signature="e#14309#14310#0" expanded="true" />
-                <element signature="e#14343#14344#0" expanded="true" />
-                <element signature="e#14390#14391#0" expanded="true" />
-                <element signature="e#14426#14427#0" expanded="true" />
-                <element signature="e#14470#14471#0" expanded="true" />
                 <element signature="class#Storage#0;class#Paxos#0" />
                 <element signature="method#Storage#0;class#Storage#0;class#Paxos#0" />
               </folding>
@@ -71,11 +64,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HW5/paxos/PaxosTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="150" selection-start-line="150" selection-end-line="150" />
+            <state relative-caret-position="484">
+              <caret line="151" selection-start-line="151" selection-end-line="151" />
               <folding>
                 <element signature="method#ndecided#0;class#PaxosTest#0" />
-                <element signature="method#waitn#0;class#PaxosTest#0" />
                 <element signature="method#cleanup#0;class#PaxosTest#0" />
                 <element signature="method#initPaxos#0;class#PaxosTest#0" />
                 <element signature="method#TestBasic#0;class#PaxosTest#0" />
@@ -88,10 +80,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HW5/paxos/Request.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="31" column="27" lean-forward="true" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+            <state relative-caret-position="256">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
               <folding>
-                <element signature="e#1014#1015#0" expanded="true" />
                 <element signature="e#1040#1041#0" expanded="true" />
                 <element signature="e#1057#1058#0" expanded="true" />
                 <element signature="e#1083#1084#0" expanded="true" />
@@ -252,7 +243,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556494554145" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556497946633" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -388,44 +379,44 @@
       <workItem from="1554045831520" duration="12103000" />
       <workItem from="1554236570661" duration="2000000" />
       <workItem from="1554993718075" duration="2108000" />
-      <workItem from="1556136930715" duration="64711000" />
+      <workItem from="1556136930715" duration="68113000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PaxosTest - 2019.04.28 at 18h 14m 25s.xml">
-      <configuration name="PaxosTest" configurationId="JUnit" />
+    <history-entry file="PaxosTest_TestDeaf - 2019.04.28 at 19h 13m 58s.xml">
+      <configuration name="PaxosTest.TestDeaf" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PaxosTest - 2019.04.28 at 18h 15m 58s.xml">
-      <configuration name="PaxosTest" configurationId="JUnit" />
+    <history-entry file="PaxosTest_TestDeaf - 2019.04.28 at 19h 18m 07s.xml">
+      <configuration name="PaxosTest.TestDeaf" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PaxosTest - 2019.04.28 at 18h 17m 24s.xml">
-      <configuration name="PaxosTest" configurationId="JUnit" />
+    <history-entry file="PaxosTest_TestDeaf - 2019.04.28 at 19h 19m 15s.xml">
+      <configuration name="PaxosTest.TestDeaf" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PaxosTest - 2019.04.28 at 18h 17m 44s.xml">
-      <configuration name="PaxosTest" configurationId="JUnit" />
+    <history-entry file="PaxosTest_TestDeaf - 2019.04.28 at 19h 21m 20s.xml">
+      <configuration name="PaxosTest.TestDeaf" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PaxosTest - 2019.04.28 at 18h 19m 38s.xml">
-      <configuration name="PaxosTest" configurationId="JUnit" />
+    <history-entry file="PaxosTest_TestDeaf - 2019.04.28 at 19h 23m 30s.xml">
+      <configuration name="PaxosTest.TestDeaf" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PaxosTest - 2019.04.28 at 18h 20m 28s.xml">
-      <configuration name="PaxosTest" configurationId="JUnit" />
+    <history-entry file="PaxosTest_TestDeaf - 2019.04.28 at 19h 24m 48s.xml">
+      <configuration name="PaxosTest.TestDeaf" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PaxosTest - 2019.04.28 at 18h 23m 23s.xml">
-      <configuration name="PaxosTest" configurationId="JUnit" />
+    <history-entry file="PaxosTest_TestDeaf - 2019.04.28 at 19h 27m 08s.xml">
+      <configuration name="PaxosTest.TestDeaf" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PaxosTest - 2019.04.28 at 18h 27m 29s.xml">
-      <configuration name="PaxosTest" configurationId="JUnit" />
+    <history-entry file="PaxosTest_TestDeaf - 2019.04.28 at 19h 29m 21s.xml">
+      <configuration name="PaxosTest.TestDeaf" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PaxosTest - 2019.04.28 at 18h 28m 55s.xml">
-      <configuration name="PaxosTest" configurationId="JUnit" />
+    <history-entry file="PaxosTest_TestDeaf - 2019.04.28 at 19h 30m 11s.xml">
+      <configuration name="PaxosTest.TestDeaf" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PaxosTest - 2019.04.28 at 18h 35m 30s.xml">
+    <history-entry file="PaxosTest - 2019.04.28 at 19h 31m 40s.xml">
       <configuration name="PaxosTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191030000" />
+    <option name="totallyTimeSpent" value="194432000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -759,17 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ReferenceDoc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="122" column="45" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
-          <folding>
-            <element signature="e#2946#3567#0" />
-            <element signature="e#3099#3507#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HW5/paxos/PaxosRMI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -805,27 +785,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/HW5/paxos/PaxosTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="150" selection-start-line="150" selection-end-line="150" />
-          <folding>
-            <element signature="method#ndecided#0;class#PaxosTest#0" />
-            <element signature="method#waitn#0;class#PaxosTest#0" />
-            <element signature="method#cleanup#0;class#PaxosTest#0" />
-            <element signature="method#initPaxos#0;class#PaxosTest#0" />
-            <element signature="method#TestBasic#0;class#PaxosTest#0" />
-            <element signature="method#TestForget#0;class#PaxosTest#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HW5/paxos/Request.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="31" column="27" lean-forward="true" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+        <state relative-caret-position="256">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
           <folding>
-            <element signature="e#1014#1015#0" expanded="true" />
             <element signature="e#1040#1041#0" expanded="true" />
             <element signature="e#1057#1058#0" expanded="true" />
             <element signature="e#1083#1084#0" expanded="true" />
@@ -835,35 +799,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ReferenceDoc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="122" column="45" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
+          <folding>
+            <element signature="e#2946#3567#0" />
+            <element signature="e#3099#3507#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/HW5/paxos/PaxosTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="151" selection-start-line="151" selection-end-line="151" />
+          <folding>
+            <element signature="method#ndecided#0;class#PaxosTest#0" />
+            <element signature="method#cleanup#0;class#PaxosTest#0" />
+            <element signature="method#initPaxos#0;class#PaxosTest#0" />
+            <element signature="method#TestBasic#0;class#PaxosTest#0" />
+            <element signature="method#TestForget#0;class#PaxosTest#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/HW5/paxos/Paxos.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="227" column="9" lean-forward="true" selection-start-line="227" selection-start-column="9" selection-end-line="227" selection-end-column="9" />
+        <state relative-caret-position="501">
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;method#Call#0;class#Paxos#0" />
             <element signature="method#Call#0;class#Paxos#0" />
             <element signature="docComment;method#Start#0;class#Paxos#0" />
+            <element signature="method#run#0;class#Paxos#0" />
+            <element signature="method#Prepare#0;class#Paxos#0" />
+            <element signature="method#Accept#0;class#Paxos#0" />
             <element signature="method#getStorage#0;class#Paxos#0" />
+            <element signature="method#Decide#0;class#Paxos#0" />
             <element signature="docComment;method#Done#0;class#Paxos#0" />
             <element signature="method#Done#0;class#Paxos#0" />
             <element signature="docComment;method#Max#0;class#Paxos#0" />
             <element signature="method#Max#0;class#Paxos#0" />
-            <element signature="e#10676#10732#1" />
-            <element signature="e#10955#10956#0" expanded="true" />
+            <element signature="e#10899#10900#0" expanded="true" />
+            <element signature="e#10954#10955#0" expanded="true" />
             <element signature="docComment;method#Min#0;class#Paxos#0" />
-            <element signature="e#11991#12027#1" />
-            <element signature="e#12250#12251#0" expanded="true" />
+            <element signature="e#12214#12215#0" expanded="true" />
+            <element signature="e#12249#12250#0" expanded="true" />
             <element signature="method#forget#0;class#Paxos#0" />
             <element signature="method#Status#0;class#Paxos#0" />
             <element signature="class#retStatus#0;class#Paxos#0" />
             <element signature="method#Kill#0;class#Paxos#0" />
-            <element signature="e#14271#14272#0" expanded="true" />
-            <element signature="e#14309#14310#0" expanded="true" />
-            <element signature="e#14343#14344#0" expanded="true" />
-            <element signature="e#14390#14391#0" expanded="true" />
-            <element signature="e#14426#14427#0" expanded="true" />
-            <element signature="e#14470#14471#0" expanded="true" />
             <element signature="class#Storage#0;class#Paxos#0" />
             <element signature="method#Storage#0;class#Storage#0;class#Paxos#0" />
           </folding>

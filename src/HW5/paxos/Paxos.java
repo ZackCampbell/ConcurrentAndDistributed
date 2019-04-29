@@ -149,8 +149,8 @@ public class Paxos implements PaxosRMI, Runnable{
             int prepCounter = 0;
             for (int id = 0; id < this.peers.length; id++) {                               // Send "Prepare" request to all peers
                 Response prepResponse;
-                if (id != this.me)
-                    prepResponse = this.Call("Prepare", new Request(storage.n, storage.v, seq), id);
+                if (id != me)
+                    prepResponse = Call("Prepare", new Request(storage.n, storage.v, seq), id);
                 else
                     prepResponse = Prepare(new Request(storage.n, storage.v, seq));
                 if (prepResponse != null && !prepResponse.getReject()) {
@@ -167,6 +167,7 @@ public class Paxos implements PaxosRMI, Runnable{
                     storage.mutex.unlock();
                 }
             }
+            prepResponseList.clear();
 //            storage.setHighestPromise(currHighestProposal);
             if (prepCounter > peers.length / 2) {
                 if (storage.n_p <= storage.n) {
@@ -175,10 +176,10 @@ public class Paxos implements PaxosRMI, Runnable{
                     storage.mutex.unlock();
                 }
                 int accCounter = 0;
-                for (int id = 0; id < this.peers.length; id++) {                           // Send "Accept" request to all peers
+                for (int id = 0; id < peers.length; id++) {                           // Send "Accept" request to all peers
                     Response accResponse;
-                    if (id != this.me)
-                        accResponse = this.Call("Accept", new Request(storage.n, storage.v_prime, seq), id);
+                    if (id != me)
+                        accResponse = Call("Accept", new Request(storage.n, storage.v_prime, seq), id);
                     else
                         accResponse = Accept(new Request(storage.n, storage.v_prime, seq));
                     if (accResponse != null && !accResponse.getReject()) {
@@ -193,10 +194,10 @@ public class Paxos implements PaxosRMI, Runnable{
                 }
                 if (accCounter > peers.length / 2) {
                     accResponseList.clear();
-                    for (int id = 0; id < this.peers.length; id++) {
+                    for (int id = 0; id < peers.length; id++) {
                         Response decResponse;
-                        if (id != this.me)
-                            decResponse = this.Call("Decide", new Request(storage.v_prime, seq), id);
+                        if (id != me)
+                            decResponse = Call("Decide", new Request(storage.v_prime, seq), id);
                         else
                             decResponse = Decide(new Request(storage.v_prime, seq));
                         if (decResponse != null) {
@@ -217,8 +218,8 @@ public class Paxos implements PaxosRMI, Runnable{
             storage = new Storage(req.getV());
             storage.n_p = req.getN();
             storageMap.put(req.getSeq(), storage);
-            response = new Response(req.getN(), storage.n_a, storage.v_prime, this.minimum.get());
-        } else if (req.getN() > storage.n_p) {
+        }
+        if (req.getN() >= storage.n_p) {
             storage.mutex.lock();
             storage.n_p = req.getN();
             storage.mutex.unlock();
